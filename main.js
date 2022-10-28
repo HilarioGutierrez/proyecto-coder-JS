@@ -6,7 +6,7 @@ function iniciarCotizacion() {
     let monedaDestino = "";
     let pedirImporte = 0;
     let cotizacionTipo = 0;
-    let valorCambio = 0;
+    let importeFinal = 0;
     let seguirCotizando = false;
 
     do {
@@ -14,24 +14,21 @@ function iniciarCotizacion() {
         validarSiNo(monedaOrigen);
 
         pedirImporte = Number(prompt("ingrese el valor que desea cambiar:", "ej: 1000"));
-        let importeValidado = validarNumero(pedirImporte);
-        console.log(importeValidado)
+        let importeValido = validarNumero(pedirImporte);
+        console.log(importeValido)
 
         monedaDestino = prompt("Seleccione a que moneda desea cambiar:\n USD\n EURO\n REAL", "Escriba USD, EURO o REAL").toUpperCase();
 
         switch (monedaDestino) {
             case "USD":
-                valorCambio;
                 cotizacionTipo = 290;
                 alert("El valor del Dolar en el dia de hoy es de $290");
                 break;
             case "EURO":
-                valorCambio;
                 cotizacionTipo = 310;
                 alert("El valor del Euro en el dia de hoy es de $310");
                 break;
             case "REAL":
-                valorCambio;
                 cotizacionTipo = 12;
                 alert("El valor del Real en el dia de hoy es de $12");
                 break;
@@ -40,16 +37,22 @@ function iniciarCotizacion() {
                 cotizacionTipo = 0;
                 pedirImporte = 0;
                 break;
-
         };
+        console.log(monedaDestino)
+        console.log(cotizacionTipo)
 
-        alert("usted recibira " + monedaDestino + " " + cotizar(importeValidado, cotizacionTipo).toFixed(3))
+importeFinal = cotizar(importeValido,cotizacionTipo);
+
+        alert("usted recibira " + monedaDestino + " " + importeFinal.toFixed(3))
+        console.log(importeFinal.toFixed(3))
 
         seguirCotizando = confirm("Quiere realizar otra cotizacion?");
 
     } while (seguirCotizando) {
         alert("Gracias por elegirnos :)")
     }
+
+    return importeFinal
 }
 
 //--->VALIDACION PARA QUE PONGA SI O NO <---//
@@ -82,9 +85,9 @@ function validarNumero(pedirImporte) {
 }
 
 //--->FUNCION CONVERSION<---//
+
 function cotizar(importe, cambio) {
     return importe / cambio;
-
 }
 
 iniciarCotizacion();
