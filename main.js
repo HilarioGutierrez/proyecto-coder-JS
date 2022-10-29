@@ -17,6 +17,7 @@ function iniciarCotizacion() {
         let importeValido = validarNumero(pedirImporte);
         console.log(importeValido)
 
+        function solicitarMoneda(){
         monedaDestino = prompt("Seleccione a que moneda desea cambiar:\n USD\n EURO\n REAL", "Escriba USD, EURO o REAL").toUpperCase();
 
         switch (monedaDestino) {
@@ -36,8 +37,11 @@ function iniciarCotizacion() {
                 alert("Debe ingresar una de las opciones indicadas para recibir la cotizacion");
                 cotizacionTipo = 0;
                 pedirImporte = 0;
+                solicitarMoneda()
                 break;
-        };
+        }
+    };
+    solicitarMoneda();
         console.log(monedaDestino)
         console.log(cotizacionTipo)
 
