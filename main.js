@@ -1,105 +1,143 @@
 
-// ---> PRE-ENTREGA HILARIO GUTIERREZ - COTIZADOR DE DIVISA <---//
-function iniciarCotizacion() {
+function comprarPasaje() {
 
-    let monedaOrigen = "";
-    let monedaDestino = "";
-    let pedirImporte = 0;
-    let cotizacionTipo = 0;
-    let importeFinal = 0;
-    let seguirCotizando = false;
+    //Presento las variables sin valor // 
+
+    let destinoFinal;
+    let idaYVuelta;
+    let precioIda;
+    let precioVuelta;
+    let seguirComprando;
+    let tazaAeropuerto;
+    let subtotal;
+    let servicio;
+    let costoPrecioFinal;
 
     do {
-        monedaOrigen = prompt("Usted va a cambiar pesos argentinos?", "Coloque SI o NO").toUpperCase();
-        validarSiNo(monedaOrigen);
+        //dentro del ciclo que quiero aplicar las variables y que se reinicien cada vez que se inicie el DO debo inicializar variables en 0 // 
 
-        pedirImporte = Number(prompt("ingrese el valor que desea cambiar:", "ej: 1000"));
-        let importeValido = validarNumero(pedirImporte);
-        console.log(importeValido)
+        destinoFinal = "";
+        idaYVuelta = "";
+        precioIda = 0;
+        precioVuelta = 0;
+        seguirComprando = false;
+        tazaAeropuerto = 0;
+        subtotal = 0;
+        servicio = 0;
+        costoPrecioFinal = 0;
 
-        function solicitarMoneda(){
-        monedaDestino = prompt("Seleccione a que moneda desea cambiar:\n USD\n EURO\n REAL", "Escriba USD, EURO o REAL").toUpperCase();
+        function elegirDestino() {
+            destinoFinal = prompt("Elija uno de nuestros 3 destinos:\n Mendoza\n Bariloche\n Misiones\n Cordoba\n", "Escriba el destino").toUpperCase();
 
-        switch (monedaDestino) {
-            case "USD":
-                cotizacionTipo = 290;
-                alert("El valor del Dolar en el dia de hoy es de $290");
-                break;
-            case "EURO":
-                cotizacionTipo = 310;
-                alert("El valor del Euro en el dia de hoy es de $310");
-                break;
-            case "REAL":
-                cotizacionTipo = 12;
-                alert("El valor del Real en el dia de hoy es de $12");
-                break;
-            default:
-                alert("Debe ingresar una de las opciones indicadas para recibir la cotizacion");
-                cotizacionTipo = 0;
-                pedirImporte = 0;
-                solicitarMoneda()
-                break;
-        }
-    };
-    solicitarMoneda();
-        console.log(monedaDestino)
-        console.log(cotizacionTipo)
+            class EleccionDestino {
+                constructor(destino, Ida, Vuelta) {
+                    this.nombre = destino.toUpperCase();
+                    this.precioIda = Number(Ida);
+                    this.precioVuelta = Number(Vuelta);
 
-importeFinal = cotizar(importeValido,cotizacionTipo);
+                }
 
-        alert("usted recibira " + monedaDestino + " " + importeFinal.toFixed(3))
-        console.log(importeFinal.toFixed(3))
+            }
 
-        seguirCotizando = confirm("Quiere realizar otra cotizacion?");
+            const destino1 = new EleccionDestino("MEMDNOZA", 6999, 5649);
+            const destino2 = new EleccionDestino("MISIONES", 6455, 5000);
+            const destino3 = new EleccionDestino("BARILOCHE", 12300, 10500);
+            const destino4 = new EleccionDestino("CORDOBA",13187,24861)
 
-    } while (seguirCotizando) {
-        alert("Gracias por elegirnos :)")
-    }
-
-    return importeFinal
-}
-
-//--->VALIDACION PARA QUE PONGA SI O NO <---//
-function validarSiNo(monedaOrigen) {
-    while (monedaOrigen === "NO" || monedaOrigen !== "SI") {
-        if (monedaOrigen !== "NO") {
-            alert("Debe ingresar SI para continuar");
-        } else {
-            alert("PARA REALZIAR EL CAMBIO DEBE TENER PESOS ARGENTINOS");
+            switch (destinoFinal) {
+                case "MENDOZA":
+                    precioIda = destino1.precioIda;
+                    precioVuelta = destino1.precioVuelta;
+                    break;
+                case "MISIONES":
+                    precioIda = destino2.precioIda;
+                    precioVuelta = destino2.precioVuelta;
+                    break;
+                case "BARILOCHE":
+                    precioIda = destino3.precioIda;
+                    precioVuelta = destino3.precioVuelta;
+                    break;
+                    case "CORDOBA":
+                    precioIda = destino4.precioIda;
+                    precioVuelta = destino4.precioVuelta;
+                    break;
+                default:
+                    alert("No selecciono un destino posible. Por favor intente nuevamente")
+                    precioIda = 0;
+                    precioVuelta = 0;
+                    elegirDestino();
+                    break;
+            }
         }
 
-        monedaOrigen = prompt("Usted va a cambiar pesos argentinos?", "Coloque SI o NO").toUpperCase();
+        elegirDestino();
 
-    }
-}
+        let precioIdaYVuelta = comrparIdaYVuelta(precioIda, precioVuelta);
 
-//--->VALIDACION PARA QUE PONGA N°>=0 <---//
-function validarNumero(pedirImporte) {
-    while (Number.isNaN(pedirImporte) || pedirImporte === 0) {
-        if (pedirImporte !== 0) {
-            alert("Debe ingresar un importe valido");
-        } else {
-            alert("debe ingresar un valor superior a cero");
+        function elegirIdaYVuelta() {
+            idaYVuelta = parseInt(prompt("Usted selecciono como destino " + destinoFinal + " desea viajar:\n 1-Ida solo\n 2-Ida y Vuelta", "1 o 2"));
+
+            switch (idaYVuelta) {
+                case 1:
+                    subtotal += precioIda;
+                    alert("Usted eligio ida. El valor del vuelo es $" + subtotal);
+                    break;
+
+                case 2:
+                    subtotal += precioIdaYVuelta;
+                    alert("Usted eligio ida y vuelta. El valor del vuelo es $ " + subtotal);
+                    break
+
+                default:
+                    alert("Ingreso un dato incorrecto, intente nuevamente");
+                    elegirIdaYVuelta();
+                    break;
+                //Agregar en default el camino para que algo incorrecto vuelva al selector de 1 o 2
+            }
         }
+        elegirIdaYVuelta();
 
-        pedirImporte = Number(prompt("ingrese el valor que desea cambiar:", "ej: 1000"));
+        tazaAeropuerto = agregarTaza(subtotal);
+        servicio = calcularGastos(subtotal);
+        iva = sumarIva(subtotal);
+        costoPrecioFinal = calcularFinal(subtotal, servicio, tazaAeropuerto, iva);
+        
+        console.log(destinoFinal);
+        console.log(costoPrecioFinal)
 
+        alert("Resumen de compra:\nDestino: " + destinoFinal + "\n" + "subtotal : $" + subtotal + "\n" + "Taza Aeroportuaria: $" + tazaAeropuerto + "\n" + "Gastos de servicio : $" + servicio + "\n" + "Iva: $" + iva + "\n" + "Costo Final: $" + costoPrecioFinal)
+
+        seguirComprando = confirm("Quiere comprar otro pasaje?");
+
+    } while (seguirComprando) {
+        alert("Gracias por visitarnos")
     }
-    return pedirImporte;
 }
 
-//--->FUNCION CONVERSION<---//
+function comrparIdaYVuelta(precioIda, precioVuelta) {
 
-function cotizar(importe, cambio) {
-    return importe / cambio;
+    return precioIda + precioVuelta
 }
 
-iniciarCotizacion();
+function agregarTaza(Aeropuerto) {
+    let tazaAeropuerto = Aeropuerto % 90
+    return tazaAeropuerto
+}
 
+function calcularFinal(importe, taza, gastos, iva) {
+    costoPrecioFinal = importe + taza + gastos + iva;
+    return costoPrecioFinal;
+}
 
+function calcularGastos(servicios) {
+    let servicio = servicios * 0.10;
+    return servicio;
+}
 
+function sumarIva(monto) {
+    let iva = monto * 0.21
 
+    return iva
+}
 
-
-
-
+comprarPasaje()
