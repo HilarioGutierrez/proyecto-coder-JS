@@ -219,24 +219,26 @@ function viajarConMascota() {
     let precioMascota;
     let pesoMascota = 0;
     //hacer bucle for para conteo de capacidad de mascotas en el avion
+    //hacer bucle for para conteo de capacidad de mascotas en el avion
+    //hacer bucle for para conteo de capacidad de mascotas en el avion
     mascota = prompt("Somos una aerolinea pet friendly, en cabina tenemos capacidad para viajar con 15 mascotas, mientas que en bodega contamos con 20 lugares mas para nuestoros amigos peludos.\n\n Desea viajar con su mascota?", "si o no").toLowerCase();
 
     switch (mascota) {
         case "si":
             pesoMascota = Number(prompt("cuanto pesa su mascota?"));
             if (pesoMascota <= 18) {
-                alert("su mascota puede viajar en cabina por un costo de $5000 extra")
+                alert("Su mascota puede viajar en cabina por un costo de $5000 extra")
                 precioMascota = 5000;
             }
             if (pesoMascota > 18) {
-                alert("su mascota puede viajar solo en bodega por un costo de $4000 extra")
+                alert("Su mascota pesa mas de 18KG. Solo puede viajar en bodega por un costo de $4000 extra")
                 precioMascota = 4000;
             }
             break;
         case "no":
             pesoMascota = 0;
             precioMascota = 0;
-            alert("usted no viajara con su mascota");
+            alert("Usted no viajara con su mascota");
             break
         default:
             pesoMascota = 0;
