@@ -1,8 +1,14 @@
 
+//---> INICIO DE SESION <---//
+
+//mejorar array de usuarios. para que queden guardados y no se borren cuando termina el ciclo.
+//mejorar array de usuarios. para que queden guardados y no se borren cuando termina el ciclo.
+//mejorar array de usuarios. para que queden guardados y no se borren cuando termina el ciclo.
+
+registrarNombre();
+
+//--->PROCEDIMIENTO COMPRAR PASAJES<---//
 function comprarPasaje() {
-
-    //Presento las variables sin valor // 
-
     let destinoFinal;
     let idaYVuelta;
     let precioIda;
@@ -14,8 +20,6 @@ function comprarPasaje() {
     let costoPrecioFinal;
 
     do {
-        //dentro del ciclo que quiero aplicar las variables y que se reinicien cada vez que se inicie el DO debo inicializar variables en 0 // 
-
         destinoFinal = "";
         idaYVuelta = "";
         precioIda = 0;
@@ -25,6 +29,8 @@ function comprarPasaje() {
         subtotal = 0;
         servicio = 0;
         costoPrecioFinal = 0;
+
+
 
         function elegirDestino() {
             destinoFinal = prompt("Elija uno de nuestros 3 destinos:\n Mendoza\n Bariloche\n Misiones\n Cordoba\n", "Escriba el destino").toUpperCase();
@@ -38,11 +44,16 @@ function comprarPasaje() {
                 }
 
             }
+            //--->OBJETOS DESTINOS<---//
+            const destinos = [];
 
             const destino1 = new EleccionDestino("MEMDNOZA", 6999, 5649);
             const destino2 = new EleccionDestino("MISIONES", 6455, 5000);
             const destino3 = new EleccionDestino("BARILOCHE", 12300, 10500);
-            const destino4 = new EleccionDestino("CORDOBA",13187,24861)
+            const destino4 = new EleccionDestino("CORDOBA", 13187, 24861)
+
+            destinos.push(destino1, destino2, destino3, destino4);
+            console.log(destinos);
 
             switch (destinoFinal) {
                 case "MENDOZA":
@@ -57,7 +68,7 @@ function comprarPasaje() {
                     precioIda = destino3.precioIda;
                     precioVuelta = destino3.precioVuelta;
                     break;
-                    case "CORDOBA":
+                case "CORDOBA":
                     precioIda = destino4.precioIda;
                     precioVuelta = destino4.precioVuelta;
                     break;
@@ -68,6 +79,7 @@ function comprarPasaje() {
                     elegirDestino();
                     break;
             }
+
         }
 
         elegirDestino();
@@ -92,19 +104,32 @@ function comprarPasaje() {
                     alert("Ingreso un dato incorrecto, intente nuevamente");
                     elegirIdaYVuelta();
                     break;
-                //Agregar en default el camino para que algo incorrecto vuelva al selector de 1 o 2
             }
         }
         elegirIdaYVuelta();
+
+        agregarEquipaje();
+
+        viajarConMascota();
+
+        // AGREGAR CUANTOS PASAJEROS VAN A HACER
+        // AGREGAR CUANTOS PASAJEROS VAN A HACER
+        // AGREGAR CUANTOS PASAJEROS VAN A HACER
+        // ARRAY DE PASAJEROS
+
+        //--->GASTOS<---//
 
         tazaAeropuerto = agregarTaza(subtotal);
         servicio = calcularGastos(subtotal);
         iva = sumarIva(subtotal);
         costoPrecioFinal = calcularFinal(subtotal, servicio, tazaAeropuerto, iva);
-        
+
         console.log(destinoFinal);
         console.log(costoPrecioFinal)
 
+        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
+        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
+        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
         alert("Resumen de compra:\nDestino: " + destinoFinal + "\n" + "subtotal : $" + subtotal + "\n" + "Taza Aeroportuaria: $" + tazaAeropuerto + "\n" + "Gastos de servicio : $" + servicio + "\n" + "Iva: $" + iva + "\n" + "Costo Final: $" + costoPrecioFinal)
 
         seguirComprando = confirm("Quiere comprar otro pasaje?");
@@ -138,6 +163,88 @@ function sumarIva(monto) {
     let iva = monto * 0.21
 
     return iva
+}
+
+function registrarNombre() {
+    const usuarios = [];
+
+    let nuevoUsuario = prompt("Ingrese su nombre y apellido para comenzar con la compra").toUpperCase();
+
+    do {
+        if (nuevoUsuario === "") {
+            alert("El nombre ingresado ya existe, ingrese otro. ");
+            registrarNombre();
+        }
+    } while (usuarios.includes(nuevoUsuario));
+    usuarios.push(nuevoUsuario);
+    console.log(usuarios);
+
+    alert("Bienvenido " + nuevoUsuario + ". Comencemos la compra!")
+}
+
+function agregarEquipaje() {
+    let equipaje = 0;
+    let precioEquipaje;
+    ;
+
+    equipaje = parseInt(prompt("Desea agregar equipaje?\n 1-Bodega 23kg $3399\n 2-Bodega 12kg $2599\n 3-En cabina 10kg $2399\n 4-No deseo agregar equipaje", "Escriba el numero de la opcion que desee"));
+
+    switch (equipaje) {
+        case 1:
+            precioEquipaje = 3399;
+            confirm("usted selecciono MALETA EN BODEGA DE 23KG $3399");
+            break;
+        case 2:
+            precioEquipaje = 2599;
+            confirm("usted selecciono MALETA EN BODEGA DE 12KG $2599");
+            break;
+        case 3:
+            precioEquipaje = 2399;
+            confirm("usted selecciono MALETA EN CABINA DE 10KG $2399");
+            break;
+        case 4:
+            confirm("Usted viajara solo con equipaje de mano. Si se arrepiente puede abonar el equipaje extran en el aeropuerto")
+            break;
+        default:
+            alert("No ha elegido una opcion correcta, intente nuevamente. Gracias")
+            precioEquipaje = 0;
+            equipaje = 0;
+            agregarEquipaje();
+            break;
+    }
+}
+
+function viajarConMascota() {
+    let mascota = "";
+    let precioMascota;
+    let pesoMascota = 0;
+    //hacer bucle for para conteo de capacidad de mascotas en el avion
+    mascota = prompt("Somos una aerolinea pet friendly, en cabina tenemos capacidad para viajar con 15 mascotas, mientas que en bodega contamos con 20 lugares mas para nuestoros amigos peludos.\n\n Desea viajar con su mascota?", "si o no").toLowerCase();
+
+    switch (mascota) {
+        case "si":
+            pesoMascota = Number(prompt("cuanto pesa su mascota?"));
+            if (pesoMascota <= 18) {
+                alert("su mascota puede viajar en cabina por un costo de $5000 extra")
+                precioMascota = 5000;
+            }
+            if (pesoMascota > 18) {
+                alert("su mascota puede viajar solo en bodega por un costo de $4000 extra")
+                precioMascota = 4000;
+            }
+            break;
+        case "no":
+            pesoMascota = 0;
+            precioMascota = 0;
+            alert("usted no viajara con su mascota");
+            break
+        default:
+            pesoMascota = 0;
+            precioMascota = 0;
+            alert("Ingreso mal un dato. intente nuevamente");
+            viajarConMascota();
+            break;
+    }
 }
 
 comprarPasaje()
