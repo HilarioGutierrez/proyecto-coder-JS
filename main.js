@@ -185,7 +185,7 @@ function viajarConMascota() {
     return precioMascota;
 }
 //--->Funcion ordenar alfabeticamente los destinos<---//
-const ordenarAlfabeticamente = () => {
+function ordenarAlfabeticamente (){
     destinos.sort((a, b) => a.nombre > b.nombre);
     mostrarAlfabeticamente();
 }
@@ -206,4 +206,4 @@ function ordenar() {
 }
 
 ordenar();
-comprarPasaje();
+comprarPasaje()
