@@ -83,7 +83,7 @@ function comprarPasaje() {
             return subtotal
         }
         subtotal = valorSubtotal(valorPasajes, precioEquipaje, precioMascota)
-        
+
         tazaAeropuerto = Number(agregarTaza(subtotal).toFixed(2));
         carrito.push(tazaAeropuerto);
         servicio = Number(calcularGastos(subtotal).toFixed(2));
@@ -184,5 +184,26 @@ function viajarConMascota() {
     carrito.push(precioMascota);
     return precioMascota;
 }
+//--->Funcion ordenar alfabeticamente los destinos<---//
+const ordenarAlfabeticamente = () => {
+    destinos.sort((a, b) => a.nombre > b.nombre);
+    mostrarAlfabeticamente();
+}
+//--->Funcion nombrar lista ordenada<---//
+const mostrarAlfabeticamente = () => {
+    let ordenDeAaZ = [];
+    destinos.forEach(destino => ordenDeAaZ.push(`${destino.nombre}: $${destino.precioIda} + $${destino.precioVuelta} = $${destino.total}`))
+    alert("Lista de precios: Destino - Precio ida - Precio vuelta - Total\n" + "\n" + ordenDeAaZ.join("\n"));
+}
+//--->Funcion para aplicar el orden alfabetico y mostrarlo por alert<---//
+function ordenar() {
+    const orden = confirm("Quiere ver los destinos ordenados alfabeticamente?");
+    if (orden) {
+        ordenarAlfabeticamente();
+    } else {
+        alert("Empecemos la compra!")
+    }
+}
 
-comprarPasaje()
+ordenar();
+comprarPasaje();
