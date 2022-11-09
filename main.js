@@ -8,7 +8,7 @@ let valorPasajes;
 let precioEquipaje;
 let precioMascota;
 let subtotal;
-
+let total;
 registrarNombre();
 
 function comprarPasaje() {
@@ -19,7 +19,7 @@ function comprarPasaje() {
     let seguirComprando;
     let tazaAeropuerto;
     let servicio;
-    
+
     do {
         destinoFinal = "";
         idaYVuelta = "";
@@ -31,6 +31,7 @@ function comprarPasaje() {
         precioEquipaje = 0;
         precioMascota = 0;
         subtotal = 0;
+        total = 0;
 
         function elegirDestino() {
 
@@ -84,20 +85,23 @@ function comprarPasaje() {
 
         function valorSubtotal(pasajes, equipaje, mascota) {
             let subtotal;
-            subtotal = pasajes + equipaje + mascota
+            subtotal = Number(pasajes + equipaje + mascota)
             return subtotal
         }
-
-        tazaAeropuerto = agregarTaza(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
+        subtotal = valorSubtotal(valorPasajes, precioEquipaje, precioMascota)
+        tazaAeropuerto = agregarTaza(subtotal);
         carrito.push(tazaAeropuerto);
-        servicio = calcularGastos(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
+        servicio = calcularGastos(subtotal);
         carrito.push(servicio);
-        iva = sumarIva(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
+        iva = sumarIva(subtotal);
         carrito.push(iva);
         console.log(carrito)
+
+        total = subtotal + tazaAeropuerto + iva + servicio;
         
-        alert(carrito.join("\n"))
-        
+        carrito.push(total);
+        alert("Resumen de su compra:\n" + carrito.join("\n $"))
+
         seguirComprando = confirm("Quiere comprar otro pasaje?");
 
     } while (seguirComprando) {
@@ -146,7 +150,7 @@ function agregarEquipaje() {
     }
 
     carrito.push(precioEquipaje);
-return precioEquipaje;
+    return precioEquipaje;
 }
 
 function viajarConMascota() {
@@ -183,7 +187,9 @@ function viajarConMascota() {
     }
 
     carrito.push(precioMascota);
-return precioMascota;
+    return precioMascota;
 }
+
+
 
 comprarPasaje()
