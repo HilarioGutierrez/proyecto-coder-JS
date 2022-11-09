@@ -40,14 +40,14 @@
         </nav>
     </header>
 
-    <h1 class=" tittle justify-content-center justify-content-lg-start container text-center text-lg-start mt-4">
+    <h1 class=" tittle justify-content-center justify-content-lg-start container text-center text-lg-start mt-4 mb-5">
         Seleccione su proximo destino</h1>
 
-    <form class="d-flex flex-column m-4" action="">
+    <form class="d-flex flex-column container form-comprar" action="">
 
-        <select name="sleccionarDestino" id="seleccionarDestino" class="elegirDestino rounded-3">
+        <select name="sleccionarDestino" id="seleccionarDestino" class="elegirDestino  m-1">
             <option value="seleccionarDestino2" class="rounded-3">Seleccione su destino</option>
-            <option value="mendoza">Mendoza</option>
+            <option id="mendoza" value="mendoza">Mendoza</option>
             <option value="iguazu">Iguazú</option>
             <option value="bariloche">Bariloche</option>
             <option value="cordoba">Córdoba</option>
@@ -72,7 +72,7 @@
             <i class="bi bi-plus-circle"></i>
             <p class="container agregarPax m-1 fs-5"> Agregar otro pasajero</p>
         </div>
-        <label for="namePax" id="namePax">Pasajero 1</label>
+        <label for="namePax" id="namePax">Pasajero 2</label>
         <input type="text" placeholder=" Fernando" class="rounded-2 m-1">
         <input type="text" placeholder=" Rodriguez" class="rounded-2 m-1">
         <label for="id">Seleccione su ID</label>
@@ -85,7 +85,7 @@
         <input type="text" class="rounded-2 m-1">
 
     </form>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center m-5">
         <button type="button" class="btn btn-success m-2 btn-volver1">Volver</button>
         <button type="submit" class="btn btn-success m-2 btn-continuar1">Continuar</button>
     </div>
@@ -93,9 +93,9 @@
 
 
 
-    <script src="js/objetos.js"></script>
-    <script src="js/dom.js"></script>
-    <script src="main.js"></script>
+    <script src="../js/objetos.js"></script>
+    <script src="../js/dom.js"></script>
+    <!-- <script src="../main.js"></script> -->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

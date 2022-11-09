@@ -5,6 +5,9 @@ const carrito = [];
 //hacer condicion para que se haga un nuevo array despues de tantos datos, o hacer objeto para el carrito y guardar el objeto de carrito en el array!!//
 //hacer condicion para que se haga un nuevo array despues de tantos datos, o hacer objeto para el carrito y guardar el objeto de carrito en el array!!//
 let valorPasajes;
+let precioEquipaje;
+let precioMascota;
+let subtotal;
 
 registrarNombre();
 
@@ -16,7 +19,7 @@ function comprarPasaje() {
     let seguirComprando;
     let tazaAeropuerto;
     let servicio;
-
+    
     do {
         destinoFinal = "";
         idaYVuelta = "";
@@ -25,54 +28,26 @@ function comprarPasaje() {
         seguirComprando = false;
         tazaAeropuerto = 0;
         servicio = 0;
+        precioEquipaje = 0;
+        precioMascota = 0;
+        subtotal = 0;
 
-
-        //---> filtro para ver los destinos que tengan un valor inferior a $18000 <---//
-        const cuantoQuiereGastar = destinosAumento.filter(destino => destino.total < 18000)
-        console.log(cuantoQuiereGastar);
-
-        //--->Procedimiento do while para elqgir el destino final<---//
         function elegirDestino() {
 
             destinoFinal = prompt("Elija uno de nuestros 4 destinos:\n Mendoza\n Bariloche\n Iguazu\n Cordoba\n", "Escriba el destino").toUpperCase();
 
-            switch (destinoFinal) {
-                case "MENDOZA":
-                    precioIda = destinosAumento[0].precioIda;
-                    precioVuelta = destinosAumento[0].precioVuelta
-                    carrito.push(destinoFinal);
+            //Busqueda del destino en array destinos//
+            const busquedaDestino = destinos.find(destino => destino.nombre === destinoFinal);
 
-                    break;
-                case "IGUAZU":
-                    precioIda = destinosAumento[1].precioIda;
-                    precioVuelta = destinosAumento[1].precioVuelta;
-                    carrito.push(destinoFinal);
-
-                    break;
-                case "BARILOCHE":
-                    precioIda = destinosAumento[2].precioIda;
-                    precioVuelta = destinosAumento[2].precioVuelta;
-                    carrito.push(destinoFinal);
-
-                    break;
-                case "CORDOBA":
-                    precioIda = destinosAumento[3].precioIda;
-                    precioVuelta = destinosAumento[3].precioVuelta;
-                    carrito.push(destinoFinal);
-
-                    break;
-                default:
-                    alert("No selecciono un destino posible. Por favor intente nuevamente")
-                    precioIda = 0;
-                    precioVuelta = 0;
-                    elegirDestino();
-                    carrito.push(destinoFinal);
-                    break;
+            if (busquedaDestino) {
+                precioIda = busquedaDestino.precioIda;
+                precioVuelta = busquedaDestino.precioVuelta;
+            } else {
+                alert("No se encuentra ese destino");
             }
+            carrito.push(busquedaDestino.nombre)
         }
         elegirDestino();
-
-        destinos.forEach(sumarIva);
 
         let precioIdaYVuelta = comrparIdaYVuelta(precioIda, precioVuelta);
 
@@ -107,33 +82,23 @@ function comprarPasaje() {
 
         viajarConMascota();
 
-        //--->GASTOS<---//
+        function valorSubtotal(pasajes, equipaje, mascota) {
+            let subtotal;
+            subtotal = pasajes + equipaje + mascota
+            return subtotal
+        }
 
-        tazaAeropuerto = agregarTaza(valorPasajes);
+        tazaAeropuerto = agregarTaza(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
         carrito.push(tazaAeropuerto);
-        servicio = calcularGastos(valorPasajes);
+        servicio = calcularGastos(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
         carrito.push(servicio);
-        iva = sumarIva(valorPasajes);
+        iva = sumarIva(valorSubtotal(valorPasajes, precioEquipaje, precioMascota));
         carrito.push(iva);
         console.log(carrito)
-
-        alert("Resumen de compra:\n\n" +
-            "Pasajero/s: " + carrito[0] + "\n" +
-            "Destino: " + carrito[0] + "\n" +
-            "Equipaje: $" + carrito[2] + "\n" +
-            "Mascota: $" + carrito[3] + "\n" +
-            "Taza aeroportuaria: $" + carrito[4] + + "\n" +
-            "Gastos de servicio: $" + carrito[5] + "\n" +
-            "IVA: $" + carrito[6] + "\n" +
-            "Total: $")
-
-        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
-        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
-        //ACTUALIZAR RESUMEN DE COMPRA CON TODOS LOS DATOS NECESARIOS//
-
+        
+        alert(carrito.join("\n"))
+        
         seguirComprando = confirm("Quiere comprar otro pasaje?");
-
-
 
     } while (seguirComprando) {
         alert("Gracias por visitarnos")
@@ -172,32 +137,16 @@ function agregarEquipaje() {
 
     sumarEquipaje = parseInt(prompt("Desea agregar equipaje?\n 1-Bodega 23kg $3399\n 2-Bodega 12kg $2599\n 3-En cabina 10kg $2399\n 4-No deseo agregar equipaje", "Escriba el numero de la opcion que desee"));
 
-    switch (sumarEquipaje) {
-        case 1:
-            precioEquipaje = equipajes[0].precio;
-            confirm("usted selecciono MALETA EN BODEGA DE 23KG $" + precioEquipaje);
-            break;
-        case 2:
-            precioEquipaje = equipajes[1].precio;
-            confirm("usted selecciono MALETA EN BODEGA DE 12KG $" + precioEquipaje);
-            break;
-        case 3:
-            precioEquipaje = equipajes[2].precio;
-            confirm("usted selecciono MALETA EN CABINA DE 10KG $" + precioEquipaje);
-            break;
-        case 4:
-            confirm("Usted viajara solo con equipaje de mano. Si se arrepiente puede abonar el equipaje extran en el aeropuerto")
-            break;
-        default:
-            alert("No ha elegido una opcion correcta, intente nuevamente. Gracias")
-            precioEquipaje = 0;
-            sumarEquipaje = 0;
-            agregarEquipaje();
-            break;
+    const equipajeExtra = equipajes.find(equipaje => (equipaje.id === sumarEquipaje))
+    if (equipajeExtra) {
+        precioEquipaje = equipajeExtra.precio;
+
+    } else {
+        alert("Usted viajara solo con equipaje de meno. Si se arrepiente puede comrpar su equipaje en el aeropuerto")
     }
 
     carrito.push(precioEquipaje);
-    console.log(carrito)
+return precioEquipaje;
 }
 
 function viajarConMascota() {
@@ -234,9 +183,7 @@ function viajarConMascota() {
     }
 
     carrito.push(precioMascota);
-    console.log(carrito)
+return precioMascota;
 }
-
-
 
 comprarPasaje()
