@@ -4,7 +4,7 @@ let precioEquipaje;
 let precioMascota;
 let subtotal;
 let total;
-
+registrarNombre();
 
 //--->Funcion principal para comprar pasajes. Tiene otras funciones dentro que complementan el proceso de compra <---//
 function comprarPasaje() {
@@ -40,12 +40,10 @@ function comprarPasaje() {
             if (busquedaDestino) {
                 precioIda = busquedaDestino.precioIda;
                 precioVuelta = busquedaDestino.precioVuelta;
-                carrito.push(busquedaDestino.nombre)
             } else {
                 alert("No se encuentra ese destino");
-                comprarPasaje();
             }
-
+            carrito.push(busquedaDestino.nombre)
         }
         elegirDestino();
         alert("El valor del pasaje de ida a " + destinoFinal + " es de $" + precioIda)
@@ -98,7 +96,7 @@ function comprarPasaje() {
         total = Number(total.toFixed(2))
         carrito.push(total);
         //--->Muestra resumen de compra detallado con salto de linea<---//
-        alert("Resumen de su compra:\n" + carrito.join("\n"))
+        alert("Resumen de su compra:\n" + carrito.join("\n $"))
 
         seguirComprando = confirm("Quiere comprar otro pasaje?");
 
@@ -127,18 +125,19 @@ function sumarIva(monto) {
 
     return iva
 }
+
 //--->Funcion para obtener el nombre de la persona que realiza la compra<---//
 function registrarNombre() {
-        let nombreUsuario="";
-        nombreUsuario = prompt("Bienvenido a Turismo Kan!\n\n Ingrese su nombre para iniciar la compra de sus pasajes").toUpperCase();
+    let nombreUsuario="";
+    nombreUsuario = prompt("Bienvenido a Turismo Kan!\n\n Ingrese su nombre para iniciar la compra de sus pasajes").toUpperCase();
 while (Number(nombreUsuario) || nombreUsuario ===" ") {
-    if(nombreUsuario!==" "){
-        alert("Ingrese su nombre, por favor");
-        registrarNombre();
-    }else{
-        alert("Ingrese un nombre valido, por favor")
-        registrarNombre();
-    }
+if(nombreUsuario!==" "){
+    alert("Ingrese su nombre, por favor");
+    registrarNombre();
+}else{
+    alert("Ingrese un nombre valido, por favor")
+    registrarNombre();
+}
 }
 alert(`Bienvenido: ${nombreUsuario}. Veamos que destino le gustaría buscar`)
 carrito.push(nombreUsuario);
@@ -155,11 +154,11 @@ function agregarEquipaje() {
     const equipajeExtra = equipajes.find(equipaje => (equipaje.id === sumarEquipaje))
     if (equipajeExtra) {
         precioEquipaje = equipajeExtra.precio;
-        alert(`El valor de su equipaje segun su eleccion es: $${equipajeExtra.precio}`)
+
     } else {
-        alert("No selecciono una de las posibles opciones. Intente de nuevo")
-        agregarEquipaje();
+        alert("Usted viajara solo con equipaje de meno. Si se arrepiente puede comrpar su equipaje en el aeropuerto")
     }
+
     carrito.push(precioEquipaje);
     return precioEquipaje;
 }
@@ -200,12 +199,12 @@ function viajarConMascota() {
     return precioMascota;
 }
 //--->Funcion ordenar alfabeticamente los destinos<---//
-function ordenarAlfabeticamente() {
+function ordenarAlfabeticamente (){
     destinos.sort((a, b) => a.nombre > b.nombre);
     mostrarAlfabeticamente();
 }
-//--->Funcion mostrar lista ordenada<---//
-function mostrarAlfabeticamente() {
+//--->Funcion nombrar lista ordenada<---//
+const mostrarAlfabeticamente = () => {
     let ordenDeAaZ = [];
     destinos.forEach(destino => ordenDeAaZ.push(`${destino.nombre}: $${destino.precioIda} + $${destino.precioVuelta} = $${destino.total}`))
     alert("Lista de precios: Destino - Precio ida - Precio vuelta - Total\n" + "\n" + ordenDeAaZ.join("\n"));
@@ -219,6 +218,6 @@ function ordenar() {
         alert("Empecemos la compra!")
     }
 }
-registrarNombre();
+
 ordenar();
 comprarPasaje()
