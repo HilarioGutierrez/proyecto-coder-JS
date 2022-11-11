@@ -96,7 +96,7 @@ function comprarPasaje() {
         total = Number(total.toFixed(2))
         carrito.push(total);
         //--->Muestra resumen de compra detallado con salto de linea<---//
-        alert("Resumen de su compra:\n" + carrito.join("\n $"))
+        alert("Resumen de su compra:\n" + carrito.join("\n"))
 
         seguirComprando = confirm("Quiere comprar otro pasaje?");
 
@@ -154,7 +154,7 @@ function agregarEquipaje() {
     const equipajeExtra = equipajes.find(equipaje => (equipaje.id === sumarEquipaje))
     if (equipajeExtra) {
         precioEquipaje = equipajeExtra.precio;
-
+        alert(`Su equipaje añadido tiene el valor de $${precioEquipaje}`)
     } else {
         alert("Usted viajara solo con equipaje de meno. Si se arrepiente puede comrpar su equipaje en el aeropuerto")
     }
