@@ -10,7 +10,6 @@ const destinosAumento = destinos.map(destino => {
         nombre:destino.nombre, precioIda: Math.ceil(destino.precioIda*1.20), precioVuelta: Math.ceil(destino.precioVuelta*1.20), total:Math.floor((destino.precioIda*1.20) +(destino.precioVuelta*1.20))
     }
 })
-console.log(destinosAumento);
 
 const equipajes = [
     {id:1, peso:23, precio:3399},

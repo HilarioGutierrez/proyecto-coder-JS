@@ -4,7 +4,6 @@ let precioEquipaje;
 let precioMascota;
 let subtotal;
 let total;
-registrarNombre();
 
 //--->Funcion principal para comprar pasajes. Tiene otras funciones dentro que complementan el proceso de compra <---//
 function comprarPasaje() {
@@ -54,6 +53,7 @@ function comprarPasaje() {
         function comprarVuelta() {
             valorPasajes = 0;
             idaYVuelta = prompt("Desea comprar el pasaje de vuelta?", "Escriba si o no").toLowerCase();
+
             //---> IF anidado para calcular el valor del pasaje si es ida y vuelta o solo ida <---//
             if (idaYVuelta === "si") {
                 valorPasajes = precioIdaYVuelta;
@@ -72,16 +72,16 @@ function comprarPasaje() {
             carrito.push(valorPasajes);
         }
         comprarVuelta();
-        //--->Llama funcion para agregar equipaje<---//
         agregarEquipaje();
-        //--->Llama funcion para elegir viajar con una mascota<---//
         viajarConMascota();
+
         //--->Funcion para obtener el subtotal del pasaje, sumando los valores obtenidos en destino, tipo de pasaje, equipaje y mascota<---//
         function valorSubtotal(pasajes, equipaje, mascota) {
             let subtotal;
             subtotal = Number(pasajes + equipaje + mascota)
             return subtotal
         }
+
         subtotal = valorSubtotal(valorPasajes, precioEquipaje, precioMascota)
 
         tazaAeropuerto = Number(agregarTaza(subtotal).toFixed(2));
@@ -90,11 +90,13 @@ function comprarPasaje() {
         carrito.push(servicio);
         iva = sumarIva(subtotal);
         carrito.push(iva);
-        console.log(carrito)
 
         total = subtotal + tazaAeropuerto + iva + servicio;
         total = Number(total.toFixed(2))
         carrito.push(total);
+
+        console.log(carrito)
+
         //--->Muestra resumen de compra detallado con salto de linea<---//
         alert("Resumen de su compra:\n" + carrito.join("\n"))
 
@@ -104,21 +106,25 @@ function comprarPasaje() {
         alert("Gracias por visitarnos")
     }
 }
+
 //--->Funcion para calcular sumar 2 valores. En este caso utilizado para calcular pasajes ida y vuelta<---//
 function comrparIdaYVuelta(precioIda, precioVuelta) {
 
     return precioIda + precioVuelta
 }
+
 //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la compra. Producto del 5% del subtotal<---//
 function agregarTaza(Aeropuerto) {
     let tazaAeropuerto = Aeropuerto * 0.05
     return tazaAeropuerto
 }
+
 //--->Funcion para calcular la costo del servicio. producto del 10% del subtotal<---//
 function calcularGastos(servicios) {
     let servicio = servicios * 0.10;
     return servicio;
 }
+
 //--->Funcion para calcular el IVA. Producto *1.21<---//
 function sumarIva(monto) {
     let iva = monto * 0.21
@@ -128,21 +134,22 @@ function sumarIva(monto) {
 
 //--->Funcion para obtener el nombre de la persona que realiza la compra<---//
 function registrarNombre() {
-    let nombreUsuario="";
+    let nombreUsuario = "";
     nombreUsuario = prompt("Bienvenido a Turismo Kan!\n\n Ingrese su nombre para iniciar la compra de sus pasajes").toUpperCase();
-while (Number(nombreUsuario) || nombreUsuario ===" ") {
-if(nombreUsuario!==" "){
-    alert("Ingrese su nombre, por favor");
-    registrarNombre();
-}else{
-    alert("Ingrese un nombre valido, por favor")
-    registrarNombre();
+    while (Number(nombreUsuario) || nombreUsuario === " ") {
+        if (nombreUsuario !== " ") {
+            alert("Ingrese su nombre, por favor");
+            registrarNombre();
+        } else {
+            alert("Ingrese un nombre valido, por favor")
+            registrarNombre();
+        }
+    }
+    alert(`Bienvenido: ${nombreUsuario}. Veamos que destino le gustaría buscar`)
+    carrito.push(nombreUsuario);
+    console.log(carrito)
 }
-}
-alert(`Bienvenido: ${nombreUsuario}. Veamos que destino le gustaría buscar`)
-carrito.push(nombreUsuario);
-console.log(carrito)
-}
+
 //--->Funcion para agregar equipaje. Con find busca en array de equipaje la conincidencia para darle valor a variable precioEquipaje<---//
 function agregarEquipaje() {
     let sumarEquipaje = 0;
@@ -156,12 +163,14 @@ function agregarEquipaje() {
         precioEquipaje = equipajeExtra.precio;
         alert(`Su equipaje añadido tiene el valor de $${precioEquipaje}`)
     } else {
-        alert("Usted viajara solo con equipaje de meno. Si se arrepiente puede comrpar su equipaje en el aeropuerto")
+        alert("Elija una de las opciones disponibles");
+        agregarEquipaje();
     }
 
     carrito.push(precioEquipaje);
     return precioEquipaje;
 }
+
 //--->Funcion para agregar agregar mascota. Calcula variable precioMascota si el peso de la mascota es <> a 18kg<---//
 function viajarConMascota() {
     let mascota = "";
@@ -198,17 +207,20 @@ function viajarConMascota() {
     carrito.push(precioMascota);
     return precioMascota;
 }
+
 //--->Funcion ordenar alfabeticamente los destinos<---//
-function ordenarAlfabeticamente (){
+function ordenarAlfabeticamente() {
     destinos.sort((a, b) => a.nombre > b.nombre);
     mostrarAlfabeticamente();
 }
+
 //--->Funcion nombrar lista ordenada<---//
 const mostrarAlfabeticamente = () => {
     let ordenDeAaZ = [];
     destinos.forEach(destino => ordenDeAaZ.push(`${destino.nombre}: $${destino.precioIda} + $${destino.precioVuelta} = $${destino.total}`))
     alert("Lista de precios: Destino - Precio ida - Precio vuelta - Total\n" + "\n" + ordenDeAaZ.join("\n"));
 }
+
 //--->Funcion para aplicar el orden alfabetico y mostrarlo por alert<---//
 function ordenar() {
     const orden = confirm("Quiere ver los destinos ordenados alfabeticamente?");
@@ -219,5 +231,6 @@ function ordenar() {
     }
 }
 
+registrarNombre();
 ordenar();
-comprarPasaje()
+comprarPasaje();
