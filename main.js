@@ -31,7 +31,7 @@ function comprarPasaje() {
         //--->Funcion para elegir los destinos disponibles, busca destinos en array de objetos y otorga valor a precioIda y precioVuelta<---//
         function elegirDestino() {
 
-            destinoFinal = prompt("Elija uno de nuestros 4 destinos:\n Mendoza\n Bariloche\n Iguazu\n Cordoba\n", "Escriba el destino").toUpperCase();
+            destinoFinal = prompt("Elija uno de nuestros 4 destinos:\n Mendoza\n Bariloche\n Iguazu\n Cordoba\n Madryn\n Salta\n Jujuy\n Ushuaia\n", "Escriba el destino").toUpperCase();
 
             //--->Busqueda del destino en array destinos<---//
             const busquedaDestino = destinos.find(destino => destino.nombre === destinoFinal);

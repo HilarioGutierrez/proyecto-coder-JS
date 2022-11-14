@@ -12,22 +12,26 @@ h1 {
 
 
 body {
-    background: rgb(244,253,217);
-    background: linear-gradient(45deg, rgba(244,253,217,1) 15%, rgba(228,255,225,1) 47%, rgba(244,253,217,1) 60%);}
-
+    background-color: #f6f6f4;
+}
 nav {
-    background-color: #6A8D73;
+    background-color: #f8937e;
     color: white;
-}
-
-.card {
-    background-color: #ffe8c2;
-}
-.textDescripcionExtras {
-font-size: 0.85rem;
-color: #848584;
 }
 
 .form-comprar{
 max-width: 500px
+}
+
+.colorBtn{
+    background-color: #c23331;
+}
+
+.colorBtn:hover{
+    background-color: #f8937e;
+}
+
+.btn-success{
+    color: white;
+
 }
