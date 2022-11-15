@@ -4,7 +4,6 @@
     box-sizing: border-box;
     list-style: none;
 }
-
 h1 {
     font-style: italic;
     font-weight: bold;
@@ -14,24 +13,49 @@ h1 {
 body {
     background-color: #f6f6f4;
 }
+
 nav {
     background-color: #f8937e;
     color: white;
 }
 
-.form-comprar{
-max-width: 500px
+.form-comprar {
+    max-width: 400px;
+    margin: 0;
 }
 
-.colorBtn{
+.colorBtn {
     background-color: #c23331;
 }
 
-.colorBtn:hover{
+.colorBtn:hover {
     background-color: #f8937e;
 }
 
-.btn-success{
+.btn-success {
     color: white;
 
 }
+
+.footer {
+    background-color: #c23431;
+    font-family: sans-serif;
+    margin: 0;
+    height: 30vh
+}
+
+.colorTextoRedes {
+    color: whitesmoke;
+}
+
+.resumen {
+    background-color: #a1d2fe;
+    font-size: 0.9rem;
+    width: 300px;
+
+}
+
+.pago{
+    max-width: 500px;
+}
+
