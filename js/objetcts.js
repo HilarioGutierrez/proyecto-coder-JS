@@ -13,7 +13,6 @@ const destinos = [
         precioIda: 6455,
         precioVuelta: 5000,
         total: 6455 + 5000,
-        descripcion:""
     },
 
     {

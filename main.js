@@ -231,6 +231,7 @@ function ordenar() {
     }
 }
 
+
 registrarNombre();
 ordenar();
 comprarPasaje();
