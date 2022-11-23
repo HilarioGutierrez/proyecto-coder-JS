@@ -4,11 +4,17 @@
     box-sizing: border-box;
     list-style: none;
 }
+
 h1 {
     font-style: italic;
     font-weight: bold;
+    font-family: 'Prata', serif;
 }
 
+h2 {
+    font-family: 'Antic Slab', serif;
+
+}
 
 body {
     background-color: #f6f6f4;
@@ -55,14 +61,78 @@ nav {
 
 }
 
-.pago{
+.pago {
     max-width: 850px;
 }
 
-.carrito{
+.carrito {
     max-width: 400px;
 }
 
 .extras {
     max-width: 700px;
+}
+
+.card {
+    background-color: #ceffe7;
+}
+
+.cardDestino {
+    background-color: #ceffe7;
+    height: 450px;
+    border-radius: 50px;
+}
+
+.cardDestino:hover{
+    background-color: #f8937e;
+    transition: 1s;
+
+
+}
+
+.descripcionCards {
+    width: 220px;
+    height: 270px;
+    margin: auto;
+    margin-top: 18px;
+    font-size: 1rem;
+    color: #c23331;
+    font-family: 'Spectral', serif;
+
+}
+
+.descripcionCards:hover{
+    color: #ceffe7;
+    transition: 0.4s;
+
+}
+
+.btnViajar {
+    border-radius: 20px;
+    border-color: none;
+    background-color: #a1d3fe86;
+    box-shadow: #ceffe7 5px 7px 5px;
+
+}
+
+.btnQuitar{
+    font-size: 0.7rem;
+}
+
+.divBtnQuitar{
+    display: flex;
+    align-items: baseline;
+}
+
+.agregarPasajero{
+    cursor: pointer;
+}
+
+#btnEliminarPasajero{
+    cursor: pointer;
+}
+
+.quitar{
+    font-size: 0.78rem;
+    color: gray;
 }

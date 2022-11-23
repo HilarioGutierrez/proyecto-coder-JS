@@ -113,24 +113,13 @@ function comrparIdaYVuelta(precioIda, precioVuelta) {
     return precioIda + precioVuelta
 }
 
-//--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la compra. Producto del 5% del subtotal<---//
-function agregarTaza(Aeropuerto) {
-    let tazaAeropuerto = Aeropuerto * 0.05
-    return tazaAeropuerto
-}
-
 //--->Funcion para calcular la costo del servicio. producto del 10% del subtotal<---//
 function calcularGastos(servicios) {
     let servicio = servicios * 0.10;
     return servicio;
 }
 
-//--->Funcion para calcular el IVA. Producto *1.21<---//
-function sumarIva(monto) {
-    let iva = monto * 0.21
 
-    return iva
-}
 
 //--->Funcion para obtener el nombre de la persona que realiza la compra<---//
 function registrarNombre() {

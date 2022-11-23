@@ -10,6 +10,11 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Prata&family=Spectral:ital,wght@1,200;1,300&display=swap"
+        rel="stylesheet">
     <title>Pre-Entrega 2 - Hilario Gutierrez</title>
 </head>
 
@@ -35,59 +40,87 @@
 
     <main class="main">
 
-        <h1 class="container mt-4 d-flex justify-content-center ">Bienvenido a Turismo Kan</h1>
+        <h1 class="container mt-4 text-center text-md-start">Bienvenido a Turismo Kan</h1>
 
-        <h2 class="container mt-4 fs-4">Estos son nuestros destinos principales</h2>
+        <h2 class="container text-center d-flex justify-content-center mt-5 mb-3 fs-4">Estos son nuestros destinos
+            principales</h2>
+
+        <div class="container d-flex flex-row justify-content-center justify-content-md-start">
+            <a href="./pages/datos-pasajero.html">
+                <button class="btn  colorBtn rounded-5 btnViajar">
+                    <h2 class="fs-4">Vamos de viajar!</h2>
+                </button>
+            </a>
+        </div>
 
         <section id="sectionCards" class="container d-flex justify-content-center justify-content-lg-around flex-wrap">
 
-            <!-- <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/bariloche-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/bariloche-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong> San Carlos de Bariloche</strong> (comúnmente llamada Bariloche) es
+                    una ciudad en la región de la Patagonia argentina. Limita con Nahuel Huapi, un gran lago glacial
+                    rodeado de montañas de los Andes.</p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/cordoba-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/cordoba-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>Córdoba</strong>, se ubica en medio de las praderas de las pampas y
+                    las laderas de Sierras de Córdoba. Su animada capital, es conocida por una catedral decorada y la
+                    Manzana Jesuítica, un complejo jesuita del S XVII aún activo.</p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/iguazu-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/iguazu-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards">Las cataratas del <strong>Iguazú</strong>, son un conjunto de cataratas que
+                    se localizan en el río Iguazú, en el límite entre la provincia argentina de Misiones, el estado
+                    brasileño de Paraná y el departamento paraguayo de Ciudad del Este.</p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/jujuy-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/jujuy-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>San Salvador de Jujuy</strong> es una ciudad del noroeste de
+                    Argentina, cabecera del departamento Doctor Manuel Belgrano y capital y ciudad más poblada de la
+                    provincia de Jujuy. </p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/madryn-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/madryn-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>Puerto de Madryn</strong> es una ciudad argentina en la costa de la
+                    zona norte de la Patagonia. Sus playas de arena y su paseo costero repleto de restaurantes miran
+                    hacia la bahía del Golfo Nuevo, en donde las ballenas francas australes se reproducen de mayo a
+                    diciembre. </p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/mendoza-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/mendoza-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>Mendoza</strong> es una ciudad de la región de Cuyo en Argentina y
+                    es el corazón de la zona vitivinícola argentina, famosa por sus Malbecs y otros vinos tintos. Sus
+                    distintas bodegas ofrecen degustaciones y visitas guiadas.</p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/ushuaia-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza">
-
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/ushuaia-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>Ushuaia</strong> es una ciudad turística de Argentina. Se ubica en
+                    el archipiélago de Tierra del Fuego, el extremo austral de Sudamérica, apodado el "Fin del Mundo".
+                    Esta ciudad con mucho viento, ubicada en una escarpada colina, está rodeada de los montes Martial y
+                    el canal Beagle.</p>
             </div>
 
-            <div class="card m-3" style="width: 18rem;">
-                <a href="./pages/datos-pasajero.html"><img src="./assets/salta-portada.jpg" class="card-img-top"
-                        alt="parras de uva representando a la ciudad de mendoza"></a>
-
-            </div> -->
+            <div class="cardDestino m-3" style="width: 18rem;">
+                <img src="./assets/salta-portada.jpg" class="card-img-top"
+                    alt="parras de uva representando a la ciudad de mendoza">
+                <p class="descripcionCards"><strong>Salta</strong> es una capital provincial del noroeste montañoso de
+                    Argentina. Se fundó en 1582 y es conocida por su arquitectura colonial española y su herencia
+                    andina. En las cercanías, está el Museo de Arqueología de Alta Montaña (MAAM), que alberga
+                    artefactos incas y momias. </p>
+            </div>
 
         </section>
 
@@ -97,7 +130,7 @@
     <script src="js/objetcts.js"></script>
     <script src="js/dom.js"></script>
     <script src="js/objects-cards.js"></script>
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

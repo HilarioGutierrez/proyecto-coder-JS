@@ -1,6 +1,6 @@
 const destinos = [
     {
-        nombre: "MENDOZA",
+        nombre: "Mendoza",
         imagen: "../assets/mendoza-portada.jpg",
         precioIda: 6999,
         precioVuelta: 5649,
@@ -8,7 +8,7 @@ const destinos = [
     },
 
     {
-        nombre: "IGUAZU",
+        nombre: "Puerto Iguazú",
         imagen: "../assets/iguazu-portada.jpg",
         precioIda: 6455,
         precioVuelta: 5000,
@@ -16,7 +16,7 @@ const destinos = [
     },
 
     {
-        nombre: "CORDOBA",
+        nombre: "Córdoba",
         imagen: "../assets/cordoba-portada.jpg",
         precioIda: 13187,
         precioVuelta: 24861,
@@ -24,7 +24,7 @@ const destinos = [
     },
     
     {
-        nombre: "BARILOCHE",
+        nombre: "Bariloche",
         imagen: "../assets/bariloche-portada.jpg",
         precioIda: 12300,
         precioVuelta: 10500,
@@ -33,7 +33,7 @@ const destinos = [
     },
 
     {
-        nombre: "PUERTO MADRYN",
+        nombre: "Puerto Madryn",
         imagen: "../assets/madryn-portada.jpg",
         precioIda: 15675,
         precioVuelta: 9942,
@@ -41,7 +41,7 @@ const destinos = [
     },
 
     {
-        nombre: "JUJUY",
+        nombre: "Jujuy",
         imagen: "../assets/jujuy-portada.jpg",
         precioIda: 9931,
         precioVuelta: 11478,
@@ -49,7 +49,7 @@ const destinos = [
     },
 
     {
-        nombre: "USHUAIA",
+        nombre: "Ushuaia",
         imagen: "../assets/ushuaia-portada.jpg",
         precioIda: 13699,
         precioVuelta: 10930,
@@ -57,7 +57,7 @@ const destinos = [
     },
 
     {
-        nombre: "SALTA",
+        nombre: "Salta",
         imagen: "../assets/salta-portada.jpg",
         precioIda: 16448,
         precioVuelta: 7309,
