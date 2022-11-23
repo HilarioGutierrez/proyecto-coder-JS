@@ -25,10 +25,10 @@ const pintarCarrito = () => {
             if (elegirIda.checked) {
                 const carritoPasajeIda = destinoFinal.precioIda
 
-                const elegirVuelta =document.getElementById("elegirVuelta");
+                const elegirVuelta = document.getElementById("elegirVuelta");
                 const divVueta = document.createElement("div");
-                elegirVuelta.innerHTML = ``      
-                elegirVuelta.appendChild(divVueta); 
+                elegirVuelta.innerHTML = ``
+                elegirVuelta.appendChild(divVueta);
 
                 //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la cómpra. Producto del 5% del subtotal<---//
                 function agregarTaza(Aeropuerto) {
@@ -69,14 +69,20 @@ const pintarCarrito = () => {
             if (elegirIdaVuelta.checked) {
                 const carritoPasaje = destinoFinal.total;
 
-                const elegirVuelta =document.getElementById("elegirVuelta");
+                const elegirVuelta = document.getElementById("elegirVuelta");
                 const divVueta = document.createElement("div");
                 elegirVuelta.innerHTML = `
                 <label for="fechaVuelta">Elija la fecha de vuelta</label>
                     <input type="date" id="fechaVuelta" class="fechaVuelta rounded-2 m-1">
-                `      
-                elegirVuelta.appendChild(divVueta);          
+                `
+                elegirVuelta.appendChild(divVueta);
 
+                //funcion para pintar la fecha de vuelta<---//
+                const fechaVuelta = document.getElementById("fechaVuelta");
+                fechaVuelta.addEventListener("change", () => {
+                    const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
+                    carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
+                })
                 //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la cómpra. Producto del 5% del subtotal<---//
                 function agregarTaza(Aeropuerto) {
                     let tazaAeropuerto = Aeropuerto * 0.05
@@ -112,6 +118,7 @@ const pintarCarrito = () => {
 
     })
 
+    //--->Funcion para pintar en carrito fecha de ida<---//
     const pintarFechaIda = () => {
         const fechaIda = document.getElementById("fechaIda");
         fechaIda.addEventListener("change", () => {
@@ -119,19 +126,10 @@ const pintarCarrito = () => {
             carritoFechaIda.innerText = `${fechaIda.value}`
         })
     }
-    const pintarFechaVuelta = () => {
-        const fechaVuelta = document.querySelectorAll("#fechaVuelta");
-        fechaVuelta.addEventListener("change", () => {
-            const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
-            carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
-        }
 
 
-        )
-    }
-    pintarFechaVuelta();
     pintarFechaIda();
-    
+
 }
 
 //Pintar nombre y apellido del pasajero//

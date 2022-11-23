@@ -26,8 +26,12 @@ const agregarPasajero = () => {
             </div>
         `
         div.appendChild(pasajeroExtra)
-
+        const btnEliminarPasajero = document.querySelectorAll("#btnEliminarPasajero");
+        btnEliminarPasajero.onclick(() => {
+            pasajeroExtra.remove();
+        })
     })
+
 }
 
 // const eliminarPasajero = () =>{
@@ -39,6 +43,7 @@ const agregarPasajero = () => {
 //     const eliminado = pasajeroExtra.removeChild(divP);
 // }) 
 // }
+
 
 
 agregarPasajero();
