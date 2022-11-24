@@ -26,7 +26,7 @@ nav {
 }
 
 .form-comprar {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0;
 }
 
@@ -135,4 +135,50 @@ nav {
 .quitar{
     font-size: 0.78rem;
     color: gray;
+}
+
+.divPasajeros{
+    border: solid #a3fed2;
+    border-radius: 50px;
+}
+
+.colorBtnPasajeros{
+    background-color: #f6f6f4;
+}
+
+.colorBtnPasajeros:hover{
+    background-color: #dbdbd7;
+}
+
+.equipaje{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.mascota{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.btnGral{
+    border: solid;
+    border-color: #f8937e;
+    border-radius: 20px;
+    background-color: #f8927e86;
+    color:#c23331;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.btnGral:hover{
+    border: solid;
+    border-color: #a3fed2;
+    border-radius: 20px;
+    background-color: #a1d2fe;
+    color:#f8937e;
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0px 0px 10px;
 }
