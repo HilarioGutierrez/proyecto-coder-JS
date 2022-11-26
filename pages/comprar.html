@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <title>Document</title>
+    <title>Turismo Kan || Compra tu proximo viaje</title>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                     <div>
                         <h6 class="my-0">Equipaje:</h6>
                     </div>
-                    <span class="text-muted">$0</span>
+                    <span id="precioEquipajeCarrito" class="text-muted">$0</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
@@ -104,8 +104,11 @@
                     <strong id="totalCarrito">$0</strong>
                 </li>
             </ul>
-
+            <!-- Boton para limpiar campos -->
+            <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
         </div>
+
+
 
         <!-- Formulario para elegir destinode viaje -->
         <form id="" class="d-flex flex-column container form-comprar" action="">
@@ -122,78 +125,119 @@
                 <option id="ushuaia" value="Ushuaia">Ushuaia</option>
             </select>
             <!-- Cantidad de pasajeros -->
-            <div>
+            <div class="container d-flex flex-wrap">
                 <div id="pasajeros"
-                    class=" divPasajeros m-1 d-flex justify-content-center flex-row align-items-baseline">
-                    <spanc>Pasajeros</spanc>
-                    <button id="quitarPasajero" type="button" class="btn colorBtnPasajeros m-3"><i
-                            class="bi bi-dash-circle m-2 quitarPasajero"></i></button>
-                    <span id="cantidadPasajeros">0</span>
-                    <button id="agregarPasajero" type="button" class="btn colorBtnPasajeros m-3"><i
-                            class="bi bi-plus-circle m-2"></i></button>
-                            <button type="button" id="btnConfirmCantidadPasajeros" class="btn btnGral">Confirmar</button>
-                            <button type="button" id="btnResetPasajeros" class=" m-2 btn btnGral">Reset</button>
-                            
+                    class=" container divPasajeros m-1 d-flex justify-content-center flex-wrap align-items-baseline">
+                    <span>Pasajeros</span>
+                    <div class="d-flex flex-row align-items-baseline">
+                        <button id="quitarPasajero" type="button" class="btn colorBtnPasajeros m-3"><i
+                                class="bi bi-dash-circle m-2 quitarPasajero"></i></button>
+                        <span id="cantidadPasajeros">0</span>
+                        <button id="agregarPasajero" type="button" class="btn colorBtnPasajeros m-3"><i
+                                class="bi bi-plus-circle m-2"></i></button>
+                    </div>
+                    <button type="button" id="btnConfirmCantidadPasajeros" class="btn btnGral">Confirmar</button>
+                    <button type="button" id="btnResetPasajeros" class=" m-2 btn btnGral">Reset</button>
                 </div>
             </div>
             <!-- Viaja Ida o Ida y Vuelta? -->
-            <div class="d-flex flex-row">
-                <label for="idaVuelta" class="order-last m-2 fs-6 justify-content-start text-decoration-underline">Viaja
-                    solo ida</label>
-                <input type="radio" name="IdaYVuelta" id="Ida" class="rounded-2 m-1">
-            </div>
-            <div class="d-flex flex-row">
-                <label for="idaVuelta" class="order-last m-2 fs-6 justify-content-start text-decoration-underline">
-                    Viaja
-                    ida y vuelta</label>
-                <input type="radio" name="IdaYVuelta" id="IdaYVuelta" class="rounded-2 m-1">
-            </div>
-            <div class="fechas d-flex flex-column">
-                <div id="elegirIda" class="fechas d-flex flex-column">
-                    <label for="fechaIda">Elija la fecha de Ida</label>
-                    <input id="fechaIda" required type="date" value="" class=" fechaIda rounded-2 m-1">
+            <section id="fecha">
+                <div class="d-flex flex-row radioCheck">
+                    <label for="idaVuelta"
+                        class="order-last m-2 fs-6 justify-content-start text-decoration-underline">Viaja
+                        solo ida</label>
+                    <input type="radio" name="IdaYVuelta" id="Ida" class="rounded-2 m-1">
                 </div>
-                <div id="elegirVuelta" class="fechas d-flex flex-column">
+                <div class="d-flex flex-row">
+                    <label for="idaVuelta" class="order-last m-2 fs-6 justify-content-start text-decoration-underline">
+                        Viaja
+                        ida y vuelta</label>
+                    <input type="radio" name="IdaYVuelta" id="IdaYVuelta" class="rounded-2 m-1">
                 </div>
-            </div>
-
+                <div class="fechas d-flex flex-column">
+                    <div id="elegirIda" class="fechas d-flex flex-column">
+                        <label for="fechaIda">Elija la fecha de Ida</label>
+                        <input id="fechaIda" required type="date" value="" class=" fechaIda rounded-2 m-1">
+                    </div>
+                    <div id="elegirVuelta" class="fechas d-flex flex-column">
+                    </div>
+                </div>
+            </section>
             <!-- Seccion para agregar equipaje al viaje -->
             <section class="container-fluid d-flex flex-row flex-wrap justify-content-center">
 
                 <div class=" container-fluid d-flex flex-row flex-wrap justify-content-lg-center ">
                     <div class="container d-flex flex-row align-items-baseline justify-content-evenly">
-                        <h2 class="fs-4 m-3 container">Agregue su equipaje</h2>
+                        <h2 class="fs-4 m-3 text-center text-md-start container">Agregue su equipaje</h2>
                         <div><img src="../assets/equipaje-de-viaje.png" alt="maletas" class="equipaje"></div>
                     </div>
                     <div class="card m-1" style="width: 50rem;">
-                        <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                        <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Equipaje en bodega de 23kg</h5>
                             <small class="opacity-50">$3399</small>
-                            <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                            <div>
+                                <button id="restarEquipaje23" value="1" type="button" class="btn light"><i
+                                        class="bi bi-dash-circle-dotted"></i></button>
+                            </div>
+                            <div id="divEquipaje23">
+                                
+                            </div>
+                            <div><button id="equipaje23" value="1" type="button" class="btn light"><i
+                                        class="bi bi-plus-circle-dotted"></i></button>
+                            </div>
                         </div>
                     </div>
-
                     <div class="card m-1" style="width: 50rem;">
-                        <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                        <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Equipaje en bodega de 12kg</h5>
                             <small class="opacity-50">$2599</small>
-                            <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                            <div>
+                                <button id="equipaje23" value="1" type="button" class="btn light"><i
+                                        class="bi bi-dash-circle-dotted"></i></button>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div>
+                                <button id="equipaje12" value="2" type="button" class="btn light"><i
+                                        class="bi bi-plus-circle-dotted"></i></button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="card m-1" style="width: 50rem;">
-                        <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
-                            <h5 class="fs-6">Equipaje en cabina de 10kg</h5>
-                            <small class="opacity-50">$2399</small>
-                            <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
+                            <h5 class="fs-6 m-1">Equipaje en cabina de 10kg</h5>
+                            <small id="equipaje10" class="opacity-50">$2399</small>
+                            <div>
+                                <button id="equipaje23" value="1" type="button" class="btn light"><i
+                                        class="bi bi-dash-circle-dotted"></i></button>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div>
+                                <button type="button" value="3" class="btn light"><i
+                                        class="bi bi-plus-circle-dotted"></i></button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="card m-1" style="width: 50rem;">
-                        <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                        <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Solo llevo equipaje de mano</h5>
                             <small class="opacity-50">$0</small>
-                            <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                            <div>
+                                <button id="equipaje23" value="1" type="button" class="btn light dashSinEquipaje"><i
+                                        class="bi bi-dash-circle-dotted"></i></button>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div>
+                                <button id="equipajeNo" value="4" type="button" class="btn light"><i
+                                        class="bi bi-plus-circle-dotted"></i></button>
+                            </div>
                         </div>
 
             </section>
@@ -201,71 +245,48 @@
             <!-- Seccion para agregar mascotas al viaje -->
             <section class="container container-fluid d-flex flex-row flex-wrap justify-content-center">
                 <div class="container d-flex flex-row align-items-baseline justify-content-evenly">
-                    <h2 class="fs-4 m-3 container">Viaje con su mascota </h2>
+                    <h2 class="fs-4 m-3  text-center text-md-start container">Viaje con su mascota </h2>
                     <div><img src="../assets/mascota.png" alt="Perro" class="mascota"></div>
                 </div>
                 <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">En cabina</h5>
                         <small class="opacity-50">- 18kg $5000</small>
-                        <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
 
                 <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">En bodega</h5>
                         <small class="opacity-50">+ 18kg $4000</small>
-                        <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
 
                 <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-row align-items-baseline justify-content-between">
+                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">No llevo mascota</h5>
                         <small class="opacity-50">$0</small>
-                        <button class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
             </section>
 
-
-            <!-- <label for="namePax">Pasajero 1</label>
-            <input type="text" required id="nombrePasajero1" placeholder=" Fernando" class="rounded-2 m-1">
-            <input type="text" required id="apellidoPasajeo1" placeholder=" Rodriguez" class="rounded-2 m-1">
-            <label for="id">Seleccione su ID</label>
-            <select name="id" required id="id" class="seleccionId m-1">
-                <option value="opcionesId">Seleccione una opción</option>
-                <option value="dni">DNI</option>
-                <option value="pasaport">Pasaporte</option>
-            </select>
-            <label for="numeroId">Ingrese su numero de ID</label>
-            <input type="number" required class="rounded-2 m-1"> -->
-
-            <!-- <div class="cotnainer justify-content-between tittleAgregarPax d-flex flew-row align-items-baseline ">
-                <i id="pasajero2" class="bi bi-plus-circle agregarPasajero"></i>
-                <p class="container agregarPax m-1 text-center fs-5"> Agregar otro pasajero</p>
-            </div>
-            <div class="d-flex flex-column" id="divPasajero2">
-
-            </div> -->
-
-            <!-- Botonoes para continuar o volver -->
             <div class="d-flex order-last justify-content-center m-5">
                 <a href="../index.html"> <button type="button" class="btn m-2 btn-danger">Volver</button></a>
-                <a href="../pages/agregar-extras.html"><button id="btnContinuar" type="button"
-                        class="btn m-2 btn-danger">Confirmar</button></a>
+                <a href="../pages/pagar.html"><button id="btnContinuar" type="button"
+                        class="btn m-2 btn-success">Confirmar</button></a>
             </div>
         </form>
 
     </section>
 
     <script src="../src/objetcts.js"></script>
-    <script src="../src/pintar-html.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- <script src="../main.js"></script> -->
     <script src="../src/dom.js"></script>
-    <!-- JavaScript Bundle with Popper -->
+    <script src="../src/actualizarCarrito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>

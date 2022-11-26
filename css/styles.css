@@ -115,28 +115,6 @@ nav {
 
 }
 
-.btnQuitar{
-    font-size: 0.7rem;
-}
-
-.divBtnQuitar{
-    display: flex;
-    align-items: baseline;
-}
-
-.agregarPasajero{
-    cursor: pointer;
-}
-
-#btnEliminarPasajero{
-    cursor: pointer;
-}
-
-.quitar{
-    font-size: 0.78rem;
-    color: gray;
-}
-
 .divPasajeros{
     border: solid #a3fed2;
     border-radius: 50px;
@@ -181,4 +159,12 @@ nav {
     font-weight: bold;
     font-size: 0.8rem;
     box-shadow: 0px 0px 10px;
+}
+
+.pagar{
+    width: auto;
+}
+
+.dashSinEquipaje{
+    margin-left: 20px;
 }
