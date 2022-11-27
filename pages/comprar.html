@@ -79,7 +79,7 @@
                     <div>
                         <h6 class="my-0">Mascota:</h6>
                     </div>
-                    <span class="text-muted">$0</span>
+                    <span id="carritoMascota" class="text-muted">$0</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
@@ -157,7 +157,7 @@
                 <div class="fechas d-flex flex-column">
                     <div id="elegirIda" class="fechas d-flex flex-column">
                         <label for="fechaIda">Elija la fecha de Ida</label>
-                        <input id="fechaIda" required type="date" value="" class=" fechaIda rounded-2 m-1">
+                        <input id="fechaIda" required type="date" class=" fechaIda rounded-2 m-1">
                     </div>
                     <div id="elegirVuelta" class="fechas d-flex flex-column">
                     </div>
@@ -252,7 +252,10 @@
                     <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">En cabina</h5>
                         <small class="opacity-50">- 18kg $5000</small>
-                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <div id="divMascota1">
+
+                        </div>
+                        <button type="button" id="sumarMascota1" value="1" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
 
@@ -260,7 +263,7 @@
                     <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">En bodega</h5>
                         <small class="opacity-50">+ 18kg $4000</small>
-                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <button type="button" value="2" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
 
@@ -268,7 +271,7 @@
                     <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                         <h5 class="fs-6">No llevo mascota</h5>
                         <small class="opacity-50">$0</small>
-                        <button type="button" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
+                        <button type="button" value="3" class="btn light"><i class="bi bi-plus-circle-dotted"></i></button>
                     </div>
                 </div>
             </section>
