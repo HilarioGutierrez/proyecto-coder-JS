@@ -111,7 +111,7 @@
 
 
         <!-- Formulario para elegir destinode viaje -->
-        <form id="" class="d-flex flex-column container form-comprar" action="">
+        <form id="formComprar" class="d-flex flex-column container form-comprar" action="">
             <label for="">Elija su destino</label>
             <select name="sleccionarDestino" value="" required id="seleccionarDestino" class="elegirDestino  m-1">
                 <option selected value="xxxxxxx">Seleccione su destino</option>
@@ -278,21 +278,23 @@
 
             <div class="d-flex order-last justify-content-center m-5">
                 <a href="../index.html"> <button type="button" class="btn m-2 btn-danger">Volver</button></a>
-                <a href="../pages/pagar.html"><button id="btnContinuar" type="button"
-                        class="btn m-2 btn-success">Confirmar</button></a>
+                <a href="../pages/pagar.html">
+                    pagina siguiente
+                    </a>
+                    <button id="btnContinuar" type="submit"
+                        class="btn m-2 btn-success">Confirmar</button>
             </div>
         </form>
 
     </section>
 
-    <script src="../src/objetcts.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <!-- <script src="../main.js"></script> -->
-    <script src="../src/dom.js"></script>
-    <script src="../src/actualizarCarrito.js"></script>
+    <script src="../src/destinos.js"></script>
+    <script src="../src/equipaje-y-mascotas.js"></script>
+    <script src="../src/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 
