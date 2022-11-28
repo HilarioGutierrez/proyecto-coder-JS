@@ -56,8 +56,6 @@ const pintarCarrito = () => {
             elegirIda.addEventListener("click", () => {
                 if (elegirIda.checked) {
                     const carritoPasajeIda = destino.precioIda
-                    // carritoCompra.push(destino.precioIda)
-                    // guardarCarritoStorage(carritoCompra);
                     const elegirVuelta = document.getElementById("elegirVuelta");
                     const divVueta = document.createElement("div");
                     elegirVuelta.innerHTML = ``
@@ -69,7 +67,6 @@ const pintarCarrito = () => {
                         return tazaAeropuerto
                     }
                     const tazaAeroportuaria = agregarTaza(carritoPasajeIda);
-                    // carritoCompra.push(tazaAeroportuaria)
 
                     //--->Funcion para calcular el IVA. Producto *1.21<---//
                     function sumarIva(monto) {
@@ -78,7 +75,6 @@ const pintarCarrito = () => {
                         return iva
                     }
                     const iva = sumarIva(carritoPasajeIda)
-                    // carritoCompra.push(iva)
 
                     //--->Funcion para obtener el subtotal del pasaje<---//
                     function valorSubtotal(pasajes, equipaje, mascota) {
@@ -87,7 +83,6 @@ const pintarCarrito = () => {
                         return subtotal
                     }
                     const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda);
-                    // carritoCompra.push(carritoSubtotal);
 
 
                     carritoIva.innerText = `$${iva.toFixed(2)}`
@@ -97,12 +92,11 @@ const pintarCarrito = () => {
 
                     const total = carritoSubtotal * cantidadCarrito;
                     totalCarrito.innerText = `$${total.toFixed(2)}`;
-                    // carritoCompra.push(total)
-                    // guardarCarritoStorage(carritoCompra);
                 }
             })
         }
         checkIda(destinoFinal);
+
         //--->Funcion para crear nodo si el usuario selecciona Ida y Vuelta<---//
         const checkIdayVuelta = destino => {
             const elegirIdaVuelta = document.getElementById("IdaYVuelta");
@@ -112,7 +106,6 @@ const pintarCarrito = () => {
                     const carritoPasaje = destinoFinal.total;
                     const carritoPasajeTotal = destino.total
                     pasajeCarrito.innerText = `$${carritoPasajeTotal}`
-                    // carritoCompra.push(destino.total)
 
                     const elegirVuelta = document.getElementById("elegirVuelta");
                     const divVueta = document.createElement("div");
@@ -128,9 +121,9 @@ const pintarCarrito = () => {
                     fechaVuelta.addEventListener("change", () => {
                         const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
                         carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
-                        // carritoCompra.push(fechaVuelta.value);
 
                     })
+
                     //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la cómpra. Producto del 5% del subtotal<---//
                     function agregarTaza(Aeropuerto) {
                         let tazaAeropuerto = Aeropuerto * 0.05
@@ -138,7 +131,7 @@ const pintarCarrito = () => {
                     }
                     const tazaAeroportuaria = agregarTaza(carritoPasaje);
                     const carritoTaza = document.getElementById("carritoTaza");
-                    // carritoCompra.push(tazaAeroportuaria)
+
                     //--->Funcion para calcular el IVA. Producto *1.21<---//
                     function sumarIva(monto) {
                         let iva = monto * 0.21
@@ -147,7 +140,7 @@ const pintarCarrito = () => {
                     }
                     const iva = sumarIva(carritoPasaje)
                     const carritoIva = document.getElementById("carritoIva");
-                    // carritoCompra.push(iva);
+
                     //--->Funcion para obtener el subtotal del pasaje<---//
                     function valorSubtotal(pasajes, equipaje, mascota) {
                         let subtotal;
@@ -161,12 +154,11 @@ const pintarCarrito = () => {
                     carritoTaza.innerHTML = `$${tazaAeroportuaria.toFixed(2)}`;
                     pasajeCarrito.innerText = `$${carritoPasaje.toFixed(2)}`;
                     subtotalCarrito.innerText = `$${carritoSubtotal.toFixed(2)}`;
-                    // carritoCompra.push(carritoSubtotal)
+
                     const totalCarrito = document.getElementById("totalCarrito");
 
                     const total = carritoSubtotal * cantidadCarrito;
                     totalCarrito.innerText = `$${total.toFixed(2)}`;
-                    // carritoCompra.push(total)
                 }
             })
         }
@@ -177,9 +169,10 @@ const pintarCarrito = () => {
     //--->Funcion para pintar en carrito fecha de ida<---//
     const pintarFechaIda = () => {
         const fechaIda = document.getElementById("fechaIda");
-        const fechaidaValue = fechaIda.value;
+
         fechaIda.addEventListener("change", () => {
-            carritoFechaIda.innerText = `${fechaidaValue}`
+            const fechaIdaValue = fechaIda.value;
+            carritoFechaIda.innerText = `${fechaIdaValue}`
         })
     }
     pintarFechaIda();
@@ -248,6 +241,7 @@ const contadorPasajeros = () => {
             totalCarrito.innerText = `$0`;
             carritoFechaIda.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `$0`;
+
         });
 
     }
@@ -294,8 +288,7 @@ const agregarEquipaje = () => {
             divEquipaje23.innerHTML = `${cantidadEquipaje}`;
         }
 
-        carritoCompra.push(precioEquipaje);
-        guardarCarritoStorage(carritoCompra);
+
     })
 
     restarEquipaje23.addEventListener("click", () => {
@@ -320,16 +313,14 @@ const AgregarMascota = () => {
 }
 AgregarMascota();
 
-
+//--->Evento cuando se recarga la pagina<---//
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
     // const form = new FormData(formulario);
     const destinoNuevo = document.getElementById("seleccionarDestino").value;
     const idaFecha = document.getElementById("fechaIda");
-    const textFechaIda = idaFecha.value;
     const vueltaFecha = document.querySelectorAll("#FechaVuelta");
-    const textFechaVuelta = vueltaFecha.value;
     const precio = document.getElementById("pasajeCarrito");
     const equipaje = document.getElementById("precioEquipajeCarrito");
     const mascota = document.getElementById("carritoMascota");
@@ -343,22 +334,20 @@ formulario.addEventListener("submit", (e) => {
         {
             destino: destinoNuevo,
             pasajeros: cantidad,
-            fechaIda: textFechaIda,
-            precio: 0,
-            equipaje: 0,
-            mascota: 0,
-            tazaAeropuerto: 0,
-            iva: 0,
-            subtotal: 0,
-            total: 0
+            fechaIda: idaFecha.value,
+            precio: vueltaFecha.value,
+            equipaje: equipajes.precio,
+            mascota: mascota,
+            tazaAeropuerto: taza,
+            iva: ivaObjeto,
+            subtotal: subtotalObjeto,
+            total: totalObjeto
         }
     ]
     console.log(carritoCompra),
         guardarCarritoStorage(carritoCompra);
-        obtenerCarritoStorage("carrito");
-
-        
 })
+
 //funciones de storage
 const guardarCarritoStorage = (carritoDeCompras) => {
     localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
