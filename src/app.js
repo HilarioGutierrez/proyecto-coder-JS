@@ -287,7 +287,7 @@ const agregarEquipaje = () => {
             alert("Solo puede llevar 1 valijade este tipo x pasajero")
             divEquipaje23.innerHTML = `${cantidadEquipaje}`;
         }
-
+return BusquedaEquipaje
 
     })
 
@@ -335,13 +335,13 @@ formulario.addEventListener("submit", (e) => {
             destino: destinoNuevo,
             pasajeros: cantidad,
             fechaIda: idaFecha.value,
-            precio: vueltaFecha.value,
-            equipaje: equipajes.precio,
-            mascota: mascota,
-            tazaAeropuerto: taza,
-            iva: ivaObjeto,
-            subtotal: subtotalObjeto,
-            total: totalObjeto
+            precio: precio.textContent,
+            equipaje: equipaje.textContent,
+            mascota: mascota.textContent,
+            tazaAeropuerto: taza.textContent,
+            iva: ivaObjeto.textContent,
+            subtotal: subtotalObjeto.textContent,
+            total: totalObjeto.textContent
         }
     ]
     console.log(carritoCompra),
