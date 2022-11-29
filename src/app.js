@@ -27,6 +27,19 @@ const restarEquipaje23 = document.getElementById("restarEquipaje23");
 const formulario = document.getElementById("formComprar");
 const btnContinuar = document.getElementById("btnContinuar");
 
+//---> CARGA DE PAGINA <---//
+document.addEventListener("DOMContentLoaded", () =>{
+document.removeEventListener;
+
+    if (obtenerCarritoStorage("carrito")) {
+    const carritoObtenido = obtenerCarritoStorage("carrito");
+    alert(JSON.stringify(carritoObtenido))
+    console.log(carritoObtenido)
+}
+
+})
+
+
 //Pintar destino en resumen de compra//
 const pintarCarrito = () => {
     const lugar = document.getElementById("seleccionarDestino");
@@ -317,7 +330,8 @@ AgregarMascota();
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // const form = new FormData(formulario);
+    //--->Funcion para guardar array de carrito<---//
+    const guardarCarrito= ()=>{
     const destinoNuevo = document.getElementById("seleccionarDestino").value;
     const idaFecha = document.getElementById("fechaIda");
     const vueltaFecha = document.getElementById("carritoFechaVuelta");
@@ -328,7 +342,7 @@ formulario.addEventListener("submit", (e) => {
     const ivaObjeto = document.getElementById("carritoIva");
     const subtotalObjeto = document.getElementById("subtotalCarrito");
     const totalObjeto = document.getElementById("totalCarrito");
-
+    
     //--->array objeto de carrito<---//
     const carritoCompra = [
         {
@@ -347,8 +361,10 @@ formulario.addEventListener("submit", (e) => {
     ]
     console.log(carritoCompra),
         guardarCarritoStorage(carritoCompra);
+        return carritoCompra
+    }
 
-
+    guardarCarrito()
     //--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
     const VaciarCarrito = document.getElementById("vaciarCarrito");
     VaciarCarrito.addEventListener("click", () => {
