@@ -33,7 +33,6 @@ document.removeEventListener;
 
     if (obtenerCarritoStorage("carrito")) {
     const carritoObtenido = obtenerCarritoStorage("carrito");
-    alert(JSON.stringify(carritoObtenido))
     console.log(carritoObtenido)
 }
 
