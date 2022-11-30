@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <title>Turismo Kan || Compra tu proximo viaje</title>
 </head>
 
@@ -69,7 +71,7 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="pasajeCarrito" class="text-muted">0</span>
+                        <span id="pasajeCarrito" class="text-muted">0</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -78,8 +80,8 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="precioEquipajeCarrito" class="text-muted">0</span>
-                </div>
+                        <span id="precioEquipajeCarrito" class="text-muted">0</span>
+                    </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
@@ -87,7 +89,7 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="carritoMascota" class="text-muted">0</span>
+                        <span id="carritoMascota" class="text-muted">0</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -96,7 +98,7 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="carritoTaza" class="text-muted">0</span>
+                        <span id="carritoTaza" class="text-muted">0</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -105,21 +107,21 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="carritoIva" class="text-muted">$0</span>
+                        <span id="carritoIva" class="text-muted">0</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Subtotal:</span>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <span id="subtotalCarrito">0</span>
+                        <span id="subtotalCarrito">0</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span><strong>TOTAL:</strong></span>
                     <div class="d-flex flex-row justify-content-end text-muted">
                         <span>$</span>
-                    <strong id="totalCarrito">0</strong>
+                        <strong id="totalCarrito">0</strong>
                     </div>
                 </li>
             </ul>
@@ -176,7 +178,8 @@
                 <div class="fechas d-flex flex-column">
                     <div id="elegirIda" class="fechas d-flex flex-column">
                         <label for="fechaIda">Elija la fecha de Ida</label>
-                        <input id="fechaIda" min="2022-11-28" max="2023-02-28" required type="date" class=" fechaIda rounded-2 m-1">
+                        <input id="fechaIda" min="2022-11-28" max="2023-02-28" required type="date"
+                            class=" fechaIda rounded-2 m-1">
                     </div>
                     <div id="elegirVuelta" class="fechas d-flex flex-column">
                     </div>
@@ -193,110 +196,83 @@
                     <div class="card m-1" style="width: 50rem;">
                         <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Equipaje en bodega de 23kg</h5>
-                            <small class="opacity-50">$3399</small>
-                            <div>
-                                <button id="restarEquipaje23" value="1" type="button" class="btn light"><i
-                                        class="bi bi-dash-circle-dotted"></i></button>
-                            </div>
-                            <div id="divEquipaje23">
-
-                            </div>
-                            <div><button id="equipaje23" value="1" type="button" class="btn light"><i
-                                        class="bi bi-plus-circle-dotted"></i></button>
-                            </div>
+                            <input id="inputEquipaje23" type="number" min="0" max="8" placeholder="0"
+                                class="w-25 opacity-75 inputEquipaje">
+                            <small value="1" id="valueEquipaje23" class="opacity-50">$3399</small>
+                            <button type="button" id="confirmar23" value="1"
+                                class="btn btnGral w-50 m-2  justify-content-center">Confirmar Equipaje</button>
                         </div>
                     </div>
                     <div class="card m-1" style="width: 50rem;">
                         <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Equipaje en bodega de 12kg</h5>
+                            <input id="inputEquipaje12" type="number" min="0" max="8" placeholder="0"
+                                class="w-25 inputEquipaje opacity-75">
                             <small class="opacity-50">$2599</small>
-                            <div>
-                                <button id="equipaje23" value="1" type="button" class="btn light"><i
-                                        class="bi bi-dash-circle-dotted"></i></button>
-                            </div>
-                            <div>
-
-                            </div>
-                            <div>
-                                <button id="equipaje12" value="2" type="button" class="btn light"><i
-                                        class="bi bi-plus-circle-dotted"></i></button>
-                            </div>
+                            <button type="button" id="confirmar12" value="2"
+                                class="btn btnGral w-50 m-2 justify-content-center">Confirmar Equipaje</button>
                         </div>
                     </div>
 
-                    <div class="card m-1" style="width: 50rem;">
+                    <div class="card m-1 d-flex align-items-baseline" style="width: 50rem;">
                         <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6 m-1">Equipaje en cabina de 10kg</h5>
+                            <input id="inputEquipaje10" type="number" min="0" max="8" placeholder="0"
+                                class="w-25 inputEquipaje opacity-75">
                             <small id="equipaje10" class="opacity-50">$2399</small>
-                            <div>
-                                <button id="equipaje23" value="1" type="button" class="btn light"><i
-                                        class="bi bi-dash-circle-dotted"></i></button>
-                            </div>
-                            <div>
-
-                            </div>
-                            <div>
-                                <button type="button" value="3" class="btn light"><i
-                                        class="bi bi-plus-circle-dotted"></i></button>
-                            </div>
+                            <button type="button" id="confirmar10" value="3"
+                                class="btn btnGral w-50 m-2 justify-content-center">Confirmar Equipaje</button>
                         </div>
                     </div>
 
                     <div class="card m-1" style="width: 50rem;">
                         <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
                             <h5 class="fs-6">Solo llevo equipaje de mano</h5>
-                            <small class="opacity-50">$0</small>
-                            <div>
-                                <button id="equipaje23" value="1" type="button" class="btn light dashSinEquipaje"><i
-                                        class="bi bi-dash-circle-dotted"></i></button>
-                            </div>
-                            <div>
-
-                            </div>
-                            <div>
-                                <button id="equipajeNo" value="4" type="button" class="btn light"><i
-                                        class="bi bi-plus-circle-dotted"></i></button>
-                            </div>
+                            <input id="inputEquipaje0" type="number" min="0" max="8" placeholder="0"
+                                class="w-25 inputEquipaje opacity-75">
+                            <small class="opacity-50">Gratis</small>
+                            <button type="button" id="confirmar0" value="4"
+                                class="btn btnGral w-50 m-2 justify-content-center">Confirmar Equipaje</button>
                         </div>
 
             </section>
 
             <!-- Seccion para agregar mascotas al viaje -->
-            <section class="container container-fluid d-flex flex-row flex-wrap justify-content-center">
-                <div class="container d-flex flex-row align-items-baseline justify-content-evenly">
-                    <h2 class="fs-4 m-3  text-center text-md-start container">Viaje con su mascota </h2>
-                    <div><img src="../assets/mascota.png" alt="Perro" class="mascota"></div>
+            <div class="container d-flex flex-row align-items-center justify-content-between">
+                <div class="container d-flex flex-row align-items-center justify-content-star">
+                    <h2 class="fs-4 m-3  text-center text-md-start">Viaje con su mascota? </h2>
+                    <input type="checkbox" id="viajaConMascota" value="">
                 </div>
-                <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
-                        <h5 class="fs-6">En cabina</h5>
-                        <small class="opacity-50">- 18kg $5000</small>
-                        <div id="divMascota1">
+                <img src="../assets/mascota.png" alt="Perro" class="mascota">
+            </div>
 
-                        </div>
-                        <button type="button" id="sumarMascota1" value="1" class="btn light"><i
-                                class="bi bi-plus-circle-dotted"></i></button>
+            <!-- <div class="card m-1" style="width: 50rem;">
+                    <div class="card-body cardMascotas container">
+                        <h5 id="tituloMascota" class="fs-6 fw-bold text-decoration-underline">En cabina</h5>
+                        <small class="opacity-75">Lugares disponible:</small><small id="cantidadMascotaBodega"></small>
+                        <small class="opacity-50">- 18kg <br><br> $5000</small>
+                        <input id="inputMascotasMenor18" type="checkbox" placeholder="0" value="1">
+                        </input>
                     </div>
                 </div>
-
                 <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
-                        <h5 class="fs-6">En bodega</h5>
-                        <small class="opacity-50">+ 18kg $4000</small>
-                        <button type="button" value="2" class="btn light"><i
-                                class="bi bi-plus-circle-dotted"></i></button>
+                    <div class="card-body cardMascotas container">
+                        <h5 class="fs-6 fw-bold text-decoration-underline">En bodega</h5>
+                        <small class="opacity-75">Lugares disponible:</small><small id="cantidadMascotaBodega"></small>
+                        <small class="opacity-50">+ 18kg <br><br> $4000</small>
+                        <input id="inputMascotasMayor18" type="checkbox" placeholder="0" value="2">
+                        </input>
                     </div>
                 </div>
-
                 <div class="card m-1" style="width: 50rem;">
-                    <div class="card-body d-flex flex-wrap align-items-baseline justify-content-between">
-                        <h5 class="fs-6">No llevo mascota</h5>
-                        <small class="opacity-50">$0</small>
-                        <button type="button" value="3" class="btn light"><i
-                                class="bi bi-plus-circle-dotted"></i></button>
+                    <div class="card-body cardMascotas container">
+                        <h5 class="fs-6 fw-bold text-decoration-underline">No llevo mascota</h5>
+                        <small class="opacity-50">Sin costo</small>
+                        <input id="mascotasNo" type="checkbox" value="3" placeholder="0">
+                        </input>
                     </div>
-                </div>
-            </section>
+                </div> -->
+
 
             <div class="d-flex order-last justify-content-center m-5">
                 <a href="../index.html"> <button type="button" class="btn m-2 btn-danger">Volver</button></a>
@@ -308,12 +284,10 @@
     <script src="../src/destinos.js"></script>
     <script src="../src/equipaje-y-mascotas.js"></script>
     <script src="../src/app.js"></script>
-    <script src="../src/btn.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
 </body>
 
 </html>

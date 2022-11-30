@@ -32,7 +32,7 @@ const mascotas = [
         id: '2',
         peso: +18,
         lugar: "bodega",
-        precio: 5000,
+        precio: 4000,
     },
     {
         id: '3',

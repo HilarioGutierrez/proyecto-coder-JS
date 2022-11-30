@@ -168,3 +168,17 @@ nav {
 .dashSinEquipaje{
     margin-left: 20px;
 }
+.inputEquipaje{
+    width: 60px;
+    border-radius: 500px;
+    text-align: center;
+    
+}
+
+.cardMascotas{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
