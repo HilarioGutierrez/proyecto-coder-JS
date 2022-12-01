@@ -61,6 +61,8 @@ const pintarCarrito = () => {
         totalCarrito.innerText = `0`;
         carritoFechaIda.innerText = `xx/xx/xxxx`;
         equipajeCarrito.innerText = `0`;
+        carritoMascota.innerText = `0`;
+
 
         //--->Event para cuando solo se selecciona Viajar Ida<---//
         const checkIda = destino => {
@@ -89,12 +91,12 @@ const pintarCarrito = () => {
                     const iva = sumarIva(carritoPasajeIda)
 
                     //--->Funcion para obtener el subtotal del pasaje<---//
-                    function valorSubtotal(pasajes, equipaje, mascota,taza,iva) {
+                    function valorSubtotal(pasajes, equipaje, mascota, taza, iva) {
                         let subtotal;
                         subtotal = Number(pasajes + equipaje + mascota + taza + iva)
                         return subtotal
                     }
-                    const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda,0,0);
+                    const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, 0, 0);
 
 
                     carritoIva.innerText = `${iva.toFixed(2)}`
@@ -253,6 +255,8 @@ const contadorPasajeros = () => {
             totalCarrito.innerText = `0`;
             carritoFechaIda.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `0`;
+            carritoMascota.innerText = `0`;
+
 
         });
 
@@ -275,6 +279,7 @@ const contadorPasajeros = () => {
             totalCarrito.innerText = `0`;
             carritoFechaIda.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `0`;
+            carritoMascota.innerText = `0`;
         });
     }
 }
@@ -459,7 +464,7 @@ const agregarMascota = () => {
     const checkboxMascota = document.getElementById("viajaConMascota");
     const form = document.getElementById("formComprar");
     let divPeso = document.createElement("div");
-    
+
 
     checkboxMascota.addEventListener("change", () => {
         if (checkboxMascota.checked) {
@@ -485,8 +490,8 @@ const agregarMascota = () => {
             </div>
                     `
             form.appendChild(cardsMascotas);
-            
-        }else{
+
+        } else {
             cardsMascotas.innerHTML = `
             
             `
@@ -539,7 +544,7 @@ const agregarMascota = () => {
             });
         }
         cabinaBodega()
-        
+
     });
 }
 
@@ -586,23 +591,24 @@ formulario.addEventListener("submit", (e) => {
                     icon: "success",
                     subtitle: "Ha confirmado su viaje",
                     text: `Resumen de viaje:\n
-            destino: ${destinoNuevo}
-            pasajeros: ${cantidad}
-            fechaIda: ${idaFecha.value}
-            fechaVuelta: ${vueltaFecha.textContent}
-            precio por persona: $${Number(precio.textContent)}
-            equipaje total: $${Number(equipaje.textContent)}
-            mascota: $${Number(carritoMascota.textContent)}
-            tazaAeropuerto: $${Number(taza.textContent)}
-            iva: $${Number(ivaObjeto.textContent)}
-            subtotal: $${Number(subtotalObjeto.textContent)}
-            total: $${Number(totalObjeto.textContent)}`
+            Destino: ${destinoNuevo}
+            Pasajeros: ${cantidad}
+            Fecha Ida: ${idaFecha.value}
+            Fecha Vuelta: ${vueltaFecha.textContent}
+            Precio por persona: $${Number(precio.textContent)}
+            Equipaje total: $${Number(equipaje.textContent)}
+            Mascota: $${Number(carritoMascota.textContent)}
+            TazaAeropuerto: $${Number(taza.textContent)}
+            Iva: $${Number(ivaObjeto.textContent)}
+            Subtotal: $${Number(subtotalObjeto.textContent)}
+            Total: $${Number(totalObjeto.textContent)}`
                 })
             });
         }
         btnConfirmarCompra()
 
         //--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
+        const carritoVacio = ()=>{
         const VaciarCarrito = document.getElementById("vaciarCarrito");
         VaciarCarrito.addEventListener("click", () => {
             carritoCompra.splice(0, 9)
@@ -633,9 +639,11 @@ formulario.addEventListener("submit", (e) => {
             
             `
             carritoMascota.innerText = `0`
-            form.appendChild(cardsMascotas)
+            formulario.appendChild(cardsMascotas)
 
         });
+        }
+        carritoVacio();
     }
 
     guardarCarrito()
@@ -646,8 +654,8 @@ const guardarCarritoStorage = (carritoDeCompras) => {
     localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
 };
 //--->Obtener Storage<---//
-const obtenerCarritoStorage = (clave) => {
-    const carritoStorage = JSON.parse(localStorage.getItem(clave));
+const obtenerCarritoStorage = () => {
+    const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
     return carritoStorage;
 }
 
@@ -656,3 +664,36 @@ const borrarStorage = (clave) => {
     localStorage.removeItem(clave)
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem("carrito")) {
+        const getStorage = obtenerCarritoStorage();
+
+
+        getStorage.forEach(element => {
+            const getStorageDestino = document.getElementById("destinoCarrito");
+            const getStoragePasajero = document.getElementById("pasajerosCarrito");
+            const getStorageFechaIda = document.getElementById("carritoFechaIda");
+            const getStorageFechaVuelta = document.getElementById("carritoFechaVuelta");
+            const getStoragePrecioPasaje = document.getElementById("pasajeCarrito");
+            const getStorageEquipaje = document.getElementById("precioEquipajeCarrito");
+            const getStorageMascota = document.getElementById("carritoMascota");
+            const getStorageTaza = document.getElementById("carritoTaza");
+            const getStorageIva = document.getElementById("carritoIva");
+            const getStorageSubtotal = document.getElementById("subtotalCarrito");
+            const getStorageTotal = document.getElementById("totalCarrito");
+
+            getStorageDestino.innerText = `${element.destino}`;
+            getStoragePasajero.innerText = `${element.pasajeros}`;
+            getStorageFechaIda.innerText = `${element.fechaIda}`;
+            getStorageFechaVuelta.innerText = `${element.fechaVuelta}`;
+            getStoragePrecioPasaje.innerText = `${element.precio}`;
+            getStorageEquipaje.innerText = `${element.equipaje}`;
+            getStorageMascota.innerText = `${element.mascota}`;
+            getStorageTaza.innerText = `${element.tazaAeropuerto}`
+            getStorageIva.innerText = `${element.iva}`
+            getStorageSubtotal.innerText = `${element.subtotal}`
+            getStorageTotal.innerText = `${element.total}`
+        });
+        
+    };
+});
