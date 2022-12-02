@@ -27,16 +27,7 @@ const formulario = document.getElementById("formComprar");
 const btnContinuar = document.getElementById("btnContinuar");
 const equipajeCarrito = document.getElementById("precioEquipajeCarrito");
 const carritoMascota = document.getElementById("carritoMascota");
-//---> CARGA DE PAGINA <---//
-// document.addEventListener("DOMContentLoaded", () => {
-//     document.removeEventListener;
-
-//     if (obtenerCarritoStorage("carrito")) {
-//         const carritoObtenido = obtenerCarritoStorage("carrito");
-//         console.log(carritoObtenido)
-//     }
-
-// })
+const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
 
 
 //Pintar destino en resumen de compra//
@@ -75,29 +66,11 @@ const pintarCarrito = () => {
                     elegirVuelta.innerHTML = ``
                     elegirVuelta.appendChild(divVueta);
 
-                    //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la cómpra. Producto del 5% del subtotal<---//
-                    function agregarTaza(Aeropuerto) {
-                        let tazaAeropuerto = Aeropuerto * 0.05
-                        return tazaAeropuerto
-                    }
                     const tazaAeroportuaria = agregarTaza(carritoPasajeIda);
 
-                    //--->Funcion para calcular el IVA. Producto *1.21<---//
-                    function sumarIva(monto) {
-                        let iva = monto * 0.21
-
-                        return iva
-                    }
                     const iva = sumarIva(carritoPasajeIda)
 
-                    //--->Funcion para obtener el subtotal del pasaje<---//
-                    function valorSubtotal(pasajes, equipaje, mascota, taza, iva) {
-                        let subtotal;
-                        subtotal = Number(pasajes + equipaje + mascota + taza + iva)
-                        return subtotal
-                    }
                     const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, 0, 0);
-
 
                     carritoIva.innerText = `${iva.toFixed(2)}`
                     carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
@@ -117,9 +90,8 @@ const pintarCarrito = () => {
             elegirIdaVuelta.addEventListener("click", () => {
                 const pasajeCarrito = document.getElementById("pasajeCarrito");
                 if (elegirIdaVuelta.checked) {
-                    const carritoPasaje = destinoFinal.total;
-                    const carritoPasajeTotal = destino.total
-                    pasajeCarrito.innerText = `$${carritoPasajeTotal}`
+                    const carritoPasaje = destino.total
+                    pasajeCarrito.innerText = `$${carritoPasaje}`
 
                     const elegirVuelta = document.getElementById("elegirVuelta");
                     const divVueta = document.createElement("div");
@@ -133,36 +105,15 @@ const pintarCarrito = () => {
                     //funcion para pintar la fecha de vuelta<---//
                     const fechaVuelta = document.getElementById("fechaVuelta");
                     fechaVuelta.addEventListener("change", () => {
-                        const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
                         carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
 
                     })
 
-                    //--->Funcion para calcular la taza aeroportuaria (%) del subtotal de la cómpra. Producto del 5% del subtotal<---//
-                    function agregarTaza(Aeropuerto) {
-                        let tazaAeropuerto = Aeropuerto * 0.05
-                        return tazaAeropuerto
-                    }
                     const tazaAeroportuaria = agregarTaza(carritoPasaje);
-                    const carritoTaza = document.getElementById("carritoTaza");
 
-                    //--->Funcion para calcular el IVA. Producto *1.21<---//
-                    function sumarIva(monto) {
-                        let iva = monto * 0.21
-
-                        return iva
-                    }
                     const iva = sumarIva(carritoPasaje)
-                    const carritoIva = document.getElementById("carritoIva");
 
-                    //--->Funcion para obtener el subtotal del pasaje<---//
-                    function valorSubtotal(pasajes, equipaje, mascota) {
-                        let subtotal;
-                        subtotal = Number(pasajes + equipaje + mascota)
-                        return subtotal
-                    }
-                    const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasaje)
-                    const subtotalCarrito = document.getElementById("subtotalCarrito");
+                    let carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasaje, 0, 0)
 
                     carritoIva.innerText = `${iva.toFixed(2)}`
                     carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
@@ -190,7 +141,6 @@ const pintarCarrito = () => {
         })
     }
     pintarFechaIda();
-
 }
 pintarCarrito();
 
@@ -236,7 +186,6 @@ const contadorPasajeros = () => {
         cantidadCarrito = cantidad;
         cantidadPasajeros.innerText = `${cantidadCarrito}`
         return cantidadCarrito;
-
     }
 
     // --->Pinta en carrito la cantidad de pasajeros confirmados<---//
@@ -254,6 +203,7 @@ const contadorPasajeros = () => {
             subtotalCarrito.innerText = `0`;
             totalCarrito.innerText = `0`;
             carritoFechaIda.innerText = `xx/xx/xxxx`;
+            carritoFechaVuelta.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `0`;
             carritoMascota.innerText = `0`;
 
@@ -278,6 +228,7 @@ const contadorPasajeros = () => {
             subtotalCarrito.innerText = `0`;
             totalCarrito.innerText = `0`;
             carritoFechaIda.innerText = `xx/xx/xxxx`;
+            carritoFechaVuelta.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `0`;
             carritoMascota.innerText = `0`;
         });
@@ -550,6 +501,8 @@ const agregarMascota = () => {
 
 agregarMascota();
 
+let carritoCompra = []
+
 //--->Evento cuando se recarga la pagina<---//
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -567,7 +520,7 @@ formulario.addEventListener("submit", (e) => {
         const totalObjeto = document.getElementById("totalCarrito");
 
         //--->array objeto de carrito<---//
-        const carritoCompra = [
+        carritoCompra = [
             {
                 destino: destinoNuevo,
                 pasajeros: cantidad,
@@ -582,8 +535,7 @@ formulario.addEventListener("submit", (e) => {
                 total: Number(totalObjeto.textContent)
             }
         ]
-        console.log(carritoCompra),
-            guardarCarritoStorage(carritoCompra);
+
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
             btnContinuar.addEventListener("click", () => {
@@ -603,46 +555,19 @@ formulario.addEventListener("submit", (e) => {
             Subtotal: $${Number(subtotalObjeto.textContent)}
             Total: $${Number(totalObjeto.textContent)}`
                 })
+                const carritoCarrito = document.getElementById("carrito")
+                const divBtnVaciar = document.createElement("div");
+                divBtnVaciar.innerHTML = `
+                <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
+                `
+                carritoCarrito.appendChild(divBtnVaciar);
             });
+            console.log(carritoCompra),
+                guardarCarritoStorage(carritoCompra);
         }
         btnConfirmarCompra()
 
-        //--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
-        const carritoVacio = ()=>{
-        const VaciarCarrito = document.getElementById("vaciarCarrito");
-        VaciarCarrito.addEventListener("click", () => {
-            carritoCompra.splice(0, 9)
-            const carritoDestino = document.getElementById("destinoCarrito");
-            const radioVuelta = document.getElementById("IdaYVuelta");
-            const radioIda = document.getElementById("Ida");
-            radioIda.checked = false;
-            radioVuelta.checked = false;
-            carritoDestino.innerText = `xxxxxxx`
-            pasajerosCarrito.innerText = `xxxxxxx`
-            carritoIva.innerText = `0`
-            carritoTaza.innerHTML = `0`;
-            carritoMascota.inntertext = `0`;
-            pasajeCarrito.innerText = `0`;
-            subtotalCarrito.innerText = `0`;
-            totalCarrito.innerText = `0`;
-            carritoFechaIda.innerText = `xx/xx/xxxx`;
-            equipajeCarrito.innerText = `0`;
-            swal({
-                icon: "success",
-                title: "Carrito vacio correctamente!",
-                text: "Su carrito se encuentra sin productos",
-            });
-            borrarStorage("carrito");
-            formulario.reset()
-            cantidadPasajeros.innerText = 0;
-            cardsMascotas.innerHTML = `
-            
-            `
-            carritoMascota.innerText = `0`
-            formulario.appendChild(cardsMascotas)
 
-        });
-        }
         carritoVacio();
     }
 
@@ -663,6 +588,8 @@ const obtenerCarritoStorage = () => {
 const borrarStorage = (clave) => {
     localStorage.removeItem(clave)
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("carrito")) {
@@ -694,6 +621,50 @@ document.addEventListener('DOMContentLoaded', () => {
             getStorageSubtotal.innerText = `${element.subtotal}`
             getStorageTotal.innerText = `${element.total}`
         });
-        
+        const carritoCarrito = document.getElementById("carrito")
+        const divBtnVaciar = document.createElement("div");
+        divBtnVaciar.innerHTML = `
+        <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
+        `
+        carritoCarrito.appendChild(divBtnVaciar);
+        carritoVacio();
     };
 });
+
+//--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
+const carritoVacio = () => {
+    const VaciarCarrito = document.getElementById("vaciarCarrito");
+    VaciarCarrito.addEventListener("click", () => {
+        carritoCompra.splice(0, 9)
+        const carritoDestino = document.getElementById("destinoCarrito");
+        const radioVuelta = document.getElementById("IdaYVuelta");
+        const radioIda = document.getElementById("Ida");
+        radioIda.checked = false;
+        radioVuelta.checked = false;
+        carritoDestino.innerText = `xxxxxxx`
+        pasajerosCarrito.innerText = `xxxxxxx`
+        carritoIva.innerText = `0`
+        carritoTaza.innerHTML = `0`;
+        carritoMascota.inntertext = `0`;
+        pasajeCarrito.innerText = `0`;
+        subtotalCarrito.innerText = `0`;
+        totalCarrito.innerText = `0`;
+        carritoFechaIda.innerText = `xx/xx/xxxx`;
+        carritoFechaVuelta.innerText = `xx/xx/xxxx`;
+        equipajeCarrito.innerText = `0`;
+        swal({
+            icon: "success",
+            title: "Carrito vacio correctamente!",
+            text: "Su carrito se encuentra sin productos",
+        });
+        borrarStorage("carrito");
+        formulario.reset()
+        cantidadPasajeros.innerText = 0;
+        cardsMascotas.innerHTML = `
+    
+    `
+        carritoMascota.innerText = `0`
+        formulario.appendChild(cardsMascotas)
+
+    });
+}
