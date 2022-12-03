@@ -29,7 +29,6 @@ const equipajeCarrito = document.getElementById("precioEquipajeCarrito");
 const carritoMascota = document.getElementById("carritoMascota");
 const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
 
-
 //Pintar destino en resumen de compra//
 const pintarCarrito = () => {
     const lugar = document.getElementById("seleccionarDestino");
@@ -53,7 +52,6 @@ const pintarCarrito = () => {
         carritoFechaIda.innerText = `xx/xx/xxxx`;
         equipajeCarrito.innerText = `0`;
         carritoMascota.innerText = `0`;
-
 
         //--->Event para cuando solo se selecciona Viajar Ida<---//
         const checkIda = destino => {
@@ -128,6 +126,7 @@ const pintarCarrito = () => {
             })
         }
         checkIdayVuelta(destinoFinal);
+        carritoVacio();
 
     })
 
@@ -141,26 +140,26 @@ const pintarCarrito = () => {
         })
     }
     pintarFechaIda();
+    
 }
 pintarCarrito();
 
 // Funciones para agregar o quitar pasajeros a contador<---//
-const contadorPasajeros = () => {
+function contadorPasajeros() {
     sumarPasajero.addEventListener("click", () => {
         if (cantidad >= 8) {
             Toastify({
                 text: "Maximo 8 pasajeros",
                 duration: 2500,
                 backgroundColor: "#c23331",
-
             }).showToast();
-            cantidad = 7
+            cantidad = 7;
         }
-        cantidad++
+        cantidad++;
         actualizarCantidad();
         resetContadorPasajeros();
         confirmPasajeros();
-    })
+    });
 
     quitarPasajero.addEventListener("click", () => {
         if (cantidad <= 0) {
@@ -172,32 +171,31 @@ const contadorPasajeros = () => {
                 style: {
                     color: "#000000"
                 }
-
             }).showToast();
             cantidad = 1;
         }
-        cantidad--
+        cantidad--;
         actualizarCantidad();
         confirmPasajeros();
         resetContadorPasajeros();
-    })
+    });
     //--->Funcion para actualizar el contador de pasajeros a medida que se suman o restan<---//
     const actualizarCantidad = () => {
         cantidadCarrito = cantidad;
-        cantidadPasajeros.innerText = `${cantidadCarrito}`
+        cantidadPasajeros.innerText = `${cantidadCarrito}`;
         return cantidadCarrito;
-    }
+    };
 
     // --->Pinta en carrito la cantidad de pasajeros confirmados<---//
     const confirmPasajeros = () => {
         btnConfirmPasajeros.addEventListener("click", () => {
             cantidadCarrito = cantidad;
-            pasajerosCarrito.innerText = `${cantidadCarrito}`
+            pasajerosCarrito.innerText = `${cantidadCarrito}`;
             const radioVuelta = document.getElementById("IdaYVuelta");
             const radioIda = document.getElementById("Ida");
             radioIda.checked = false;
             radioVuelta.checked = false;
-            carritoIva.innerText = `0`
+            carritoIva.innerText = `0`;
             carritoTaza.innerHTML = `0`;
             pasajeCarrito.innerText = `0`;
             subtotalCarrito.innerText = `0`;
@@ -206,23 +204,20 @@ const contadorPasajeros = () => {
             carritoFechaVuelta.innerText = `xx/xx/xxxx`;
             equipajeCarrito.innerText = `0`;
             carritoMascota.innerText = `0`;
-
-
         });
-
-    }
+    };
 
     //--->Funcion reset cantidad de pasajeros <---//
     const resetContadorPasajeros = () => {
         btnResetPasajeros.addEventListener("click", () => {
             cantidadPasajeros.innerText = `0`;
-            pasajerosCarrito.innerText = `xxxxxxx`
+            pasajerosCarrito.innerText = `xxxxxxx`;
             cantidad = 0;
             const radioVuelta = document.getElementById("IdaYVuelta");
             const radioIda = document.getElementById("Ida");
             radioIda.checked = false;
             radioVuelta.checked = false;
-            carritoIva.innerText = `0`
+            carritoIva.innerText = `0`;
             carritoTaza.innerHTML = `0`;
             pasajeCarrito.innerText = `0`;
             subtotalCarrito.innerText = `0`;
@@ -232,7 +227,7 @@ const contadorPasajeros = () => {
             equipajeCarrito.innerText = `0`;
             carritoMascota.innerText = `0`;
         });
-    }
+    };
 }
 contadorPasajeros();
 //--->Funcion para agregar al carrito el equipaje<---//
@@ -414,8 +409,6 @@ const agregarMascota = () => {
     //--->Evento cuando chequea que viaja con mascota<---//
     const checkboxMascota = document.getElementById("viajaConMascota");
     const form = document.getElementById("formComprar");
-    let divPeso = document.createElement("div");
-
 
     checkboxMascota.addEventListener("change", () => {
         if (checkboxMascota.checked) {
@@ -443,9 +436,7 @@ const agregarMascota = () => {
             form.appendChild(cardsMascotas);
 
         } else {
-            cardsMascotas.innerHTML = `
-            
-            `
+            cardsMascotas.innerHTML = ` `
             carritoMascota.innerText = `0`
             form.appendChild(cardsMascotas)
         };
@@ -555,19 +546,11 @@ formulario.addEventListener("submit", (e) => {
             Subtotal: $${Number(subtotalObjeto.textContent)}
             Total: $${Number(totalObjeto.textContent)}`
                 })
-                const carritoCarrito = document.getElementById("carrito")
-                const divBtnVaciar = document.createElement("div");
-                divBtnVaciar.innerHTML = `
-                <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
-                `
-                carritoCarrito.appendChild(divBtnVaciar);
             });
             console.log(carritoCompra),
                 guardarCarritoStorage(carritoCompra);
         }
         btnConfirmarCompra()
-
-
         carritoVacio();
     }
 
@@ -589,12 +572,10 @@ const borrarStorage = (clave) => {
     localStorage.removeItem(clave)
 }
 
-
-
+//--->Evento cuando recarga la pagina<---//
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("carrito")) {
         const getStorage = obtenerCarritoStorage();
-
 
         getStorage.forEach(element => {
             const getStorageDestino = document.getElementById("destinoCarrito");
