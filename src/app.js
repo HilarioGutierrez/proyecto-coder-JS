@@ -529,7 +529,6 @@ formulario.addEventListener("submit", (e) => {
 
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
-            
                 swal({
                     icon: "success",
                     subtitle: "Ha confirmado su viaje",
