@@ -529,7 +529,7 @@ formulario.addEventListener("submit", (e) => {
 
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
-            btnContinuar.addEventListener("click", () => {
+            
                 swal({
                     icon: "success",
                     subtitle: "Ha confirmado su viaje",
@@ -548,7 +548,7 @@ formulario.addEventListener("submit", (e) => {
                 })
                 console.log(carritoCompra),
                 guardarCarritoStorage(carritoCompra);
-            });
+            
         }
         btnConfirmarCompra()
         carritoVacio();
