@@ -550,7 +550,6 @@ const btnConfirmarCompra = () => {
     Subtotal: $${Number(subtotalObjeto.textContent)}
     Total: $${Number(totalObjeto.textContent)}`
         })
-        console.log(carritoCompra),
         guardarCarritoStorage(carritoCompra);
     });
 }
