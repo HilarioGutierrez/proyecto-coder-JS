@@ -493,23 +493,21 @@ const agregarMascota = () => {
 agregarMascota();
 
 let carritoCompra = []
+const destinoNuevo = document.getElementById("seleccionarDestino").value;
+const idaFecha = document.getElementById("fechaIda");
+const vueltaFecha = document.getElementById("carritoFechaVuelta");
+const precio = document.getElementById("pasajeCarrito");
+const equipaje = document.getElementById("precioEquipajeCarrito");
+const taza = document.getElementById("carritoTaza");
+const ivaObjeto = document.getElementById("carritoIva");
+const subtotalObjeto = document.getElementById("subtotalCarrito");
+const totalObjeto = document.getElementById("totalCarrito");
 
 //--->Evento cuando se recarga la pagina<---//
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
-
     //--->Funcion para guardar array de carrito<---//
     const guardarCarrito = () => {
-        const destinoNuevo = document.getElementById("seleccionarDestino").value;
-        const idaFecha = document.getElementById("fechaIda");
-        const vueltaFecha = document.getElementById("carritoFechaVuelta");
-        const precio = document.getElementById("pasajeCarrito");
-        const equipaje = document.getElementById("precioEquipajeCarrito");
-        const taza = document.getElementById("carritoTaza");
-        const ivaObjeto = document.getElementById("carritoIva");
-        const subtotalObjeto = document.getElementById("subtotalCarrito");
-        const totalObjeto = document.getElementById("totalCarrito");
-
         //--->array objeto de carrito<---//
         carritoCompra = [
             {
@@ -526,30 +524,6 @@ formulario.addEventListener("submit", (e) => {
                 total: Number(totalObjeto.textContent)
             }
         ]
-
-        //--->btn confirmar formulario<---//
-        const btnConfirmarCompra = () => {
-            btnContinuar.addEventListener("click", () => {
-                swal({
-                    icon: "success",
-                    subtitle: "Ha confirmado su viaje",
-                    text: `Resumen de viaje:\n
-            Destino: ${destinoNuevo}
-            Pasajeros: ${cantidad}
-            Fecha Ida: ${idaFecha.value}
-            Fecha Vuelta: ${vueltaFecha.textContent}
-            Precio por persona: $${Number(precio.textContent)}
-            Equipaje total: $${Number(equipaje.textContent)}
-            Mascota: $${Number(carritoMascota.textContent)}
-            TazaAeropuerto: $${Number(taza.textContent)}
-            Iva: $${Number(ivaObjeto.textContent)}
-            Subtotal: $${Number(subtotalObjeto.textContent)}
-            Total: $${Number(totalObjeto.textContent)}`
-                })
-            });
-            console.log(carritoCompra),
-                guardarCarritoStorage(carritoCompra);
-        }
         btnConfirmarCompra()
         carritoVacio();
     }
@@ -557,6 +531,29 @@ formulario.addEventListener("submit", (e) => {
     guardarCarrito()
 })
 
+//--->btn confirmar formulario<---//
+const btnConfirmarCompra = () => {
+    btnContinuar.addEventListener("click", () => {
+        swal({
+            icon: "success",
+            subtitle: "Ha confirmado su viaje",
+            text: `Resumen de viaje:\n
+    Destino: ${destinoNuevo}
+    Pasajeros: ${cantidad}
+    Fecha Ida: ${idaFecha.value}
+    Fecha Vuelta: ${vueltaFecha.textContent}
+    Precio por persona: $${Number(precio.textContent)}
+    Equipaje total: $${Number(equipaje.textContent)}
+    Mascota: $${Number(carritoMascota.textContent)}
+    TazaAeropuerto: $${Number(taza.textContent)}
+    Iva: $${Number(ivaObjeto.textContent)}
+    Subtotal: $${Number(subtotalObjeto.textContent)}
+    Total: $${Number(totalObjeto.textContent)}`
+        })
+        console.log(carritoCompra),
+        guardarCarritoStorage(carritoCompra);
+    });
+}
 //--->funciones de storage<---//
 const guardarCarritoStorage = (carritoDeCompras) => {
     localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
@@ -602,12 +599,6 @@ document.addEventListener('DOMContentLoaded', () => {
             getStorageSubtotal.innerText = `${element.subtotal}`
             getStorageTotal.innerText = `${element.total}`
         });
-        const carritoCarrito = document.getElementById("carrito")
-        const divBtnVaciar = document.createElement("div");
-        divBtnVaciar.innerHTML = `
-        <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
-        `
-        carritoCarrito.appendChild(divBtnVaciar);
         carritoVacio();
     };
 });
