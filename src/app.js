@@ -57,6 +57,9 @@ const pintarCarrito = () => {
         const checkIda = destino => {
             const elegirIda = document.getElementById("Ida");
             elegirIda.addEventListener("click", () => {
+                
+                
+                
                 if (elegirIda.checked) {
                     const carritoPasajeIda = destino.precioIda
                     const elegirVuelta = document.getElementById("elegirVuelta");
@@ -259,24 +262,19 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje23.addEventListener("click", () => {
                 precioEquipaje23 = busquedaEquipaje.precio * cantidadEquipaje23;
-                if (cantidadEquipaje23 > cantidadCarrito) {
-                    swal({
-                        icon: "warning",
-                        title: "LLeva mucho equipaje :(",
-                        text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
-                        duration: 3000,
-                    })
-
-                } else {
-                    swal({
-                        icon: "success",
-                        title: "Agrando su equipaje!!",
-                        text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
-                    })
-                    equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
-                }
+                
+                cantidadEquipaje23 > cantidadCarrito? swal({
+                    icon: "warning",
+                    title: "LLeva mucho equipaje :(",
+                    text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
+                    duration: 3000,
+                }) :                     swal({
+                    icon: "success",
+                    title: "Agrando su equipaje!!",
+                    text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
+                })
+                equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
             })
-
         };
         ConfirmarEquipaje23();
     }
@@ -299,22 +297,17 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje12.addEventListener("click", () => {
                 precioEquipaje12 = busquedaEquipaje.precio * cantidadEquipaje12;
-                if (cantidadEquipaje12 > cantidadCarrito) {
-                    swal({
-                        icon: "warning",
-                        title: "LLeva mucho equipaje :(",
-                        text: "Solo esta permitido 1 equipaje de 12kg por pasajero",
-
-                    })
-
-                } else {
-                    swal({
-                        icon: "success",
-                        title: "Agrando su equipaje!!",
-                        text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje12}`,
-                    })
-                    equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
-                }
+                cantidadEquipaje23 > cantidadCarrito? swal({
+                    icon: "warning",
+                    title: "LLeva mucho equipaje :(",
+                    text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
+                    duration: 3000,
+                }) :                     swal({
+                    icon: "success",
+                    title: "Agrando su equipaje!!",
+                    text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
+                })
+                equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
             })
 
         };
@@ -339,21 +332,17 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje10.addEventListener("click", () => {
                 precioEquipaje10 = busquedaEquipaje.precio * cantidadEquipaje10;
-                if (cantidadEquipaje10 > cantidadCarrito) {
-                    swal({
-                        icon: "warning",
-                        title: "LLeva mucho equipaje :(",
-                        text: "Solo esta permitido 1 equipaje de 10kg por pasajero",
-                    })
-
-                } else {
-                    swal({
-                        icon: "success",
-                        title: "Agrando su equipaje!!",
-                        text: `Agrego con exito su equipaje de 10kg\n cantidad agregada: ${cantidadEquipaje10}`,
-                    })
-                    equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
-                }
+                cantidadEquipaje23 > cantidadCarrito? swal({
+                    icon: "warning",
+                    title: "LLeva mucho equipaje :(",
+                    text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
+                    duration: 3000,
+                }) :                     swal({
+                    icon: "success",
+                    title: "Agrando su equipaje!!",
+                    text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
+                })
+                equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
             })
 
         };
@@ -378,22 +367,17 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje0.addEventListener("click", () => {
                 precioEquipaje0 = busquedaEquipaje.precio * cantidadEquipaje0;
-                if (cantidadEquipaje0 > cantidadCarrito) {
-                    swal({
-                        icon: "warning",
-                        title: "LLeva mucho equipaje :(",
-                        text: "Solo esta permitido 1 equipaje de mano por pasajero",
-
-                    })
-
-                } else {
-                    swal({
-                        icon: "success",
-                        title: "Agrando su equipaje!!",
-                        text: `Agrego con exito su equipaje de mano\n cantidad agregada: ${cantidadEquipaje0}`,
-                    })
-                    equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
-                }
+                cantidadEquipaje23 > cantidadCarrito? swal({
+                    icon: "warning",
+                    title: "LLeva mucho equipaje :(",
+                    text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
+                    duration: 3000,
+                }) :                     swal({
+                    icon: "success",
+                    title: "Agrando su equipaje!!",
+                    text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
+                })
+                equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
             })
 
         };
@@ -572,40 +556,6 @@ const borrarStorage = (clave) => {
     localStorage.removeItem(clave)
 }
 
-//--->Evento cuando recarga la pagina<---//
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem("carrito")) {
-        const getStorage = obtenerCarritoStorage();
-
-        getStorage.forEach(element => {
-            const getStorageDestino = document.getElementById("destinoCarrito");
-            const getStoragePasajero = document.getElementById("pasajerosCarrito");
-            const getStorageFechaIda = document.getElementById("carritoFechaIda");
-            const getStorageFechaVuelta = document.getElementById("carritoFechaVuelta");
-            const getStoragePrecioPasaje = document.getElementById("pasajeCarrito");
-            const getStorageEquipaje = document.getElementById("precioEquipajeCarrito");
-            const getStorageMascota = document.getElementById("carritoMascota");
-            const getStorageTaza = document.getElementById("carritoTaza");
-            const getStorageIva = document.getElementById("carritoIva");
-            const getStorageSubtotal = document.getElementById("subtotalCarrito");
-            const getStorageTotal = document.getElementById("totalCarrito");
-
-            getStorageDestino.innerText = `${element.destino}`;
-            getStoragePasajero.innerText = `${element.pasajeros}`;
-            getStorageFechaIda.innerText = `${element.fechaIda}`;
-            getStorageFechaVuelta.innerText = `${element.fechaVuelta}`;
-            getStoragePrecioPasaje.innerText = `${element.precio}`;
-            getStorageEquipaje.innerText = `${element.equipaje}`;
-            getStorageMascota.innerText = `${element.mascota}`;
-            getStorageTaza.innerText = `${element.tazaAeropuerto}`
-            getStorageIva.innerText = `${element.iva}`
-            getStorageSubtotal.innerText = `${element.subtotal}`
-            getStorageTotal.innerText = `${element.total}`
-        });
-        carritoVacio();
-    };
-});
-
 //--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
 const carritoVacio = () => {
     const VaciarCarrito = document.getElementById("vaciarCarrito");
@@ -641,3 +591,4 @@ const carritoVacio = () => {
 
     });
 }
+
