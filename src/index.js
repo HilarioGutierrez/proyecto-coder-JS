@@ -4,11 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const getStorage = obtenerCarritoStorage();
 
         swal({
-            icon:"warning",
-            title:"Tiene elementos en el carrito",
-            text:" Finalice su comprar"
+            icon: "warning",
+            title: "Tiene elementos en el carrito",
+            text: " Finalice su comprar"
         })
-
 
         getStorage.forEach(element => {
             const getStorageDestino = document.getElementById("destinoCarrito");
@@ -35,6 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
             getStorageSubtotal.innerText = `${element.subtotal}`
             getStorageTotal.innerText = `${element.total}`
         });
+
+        //--->Agrega btn confirmar cuando se recupera storage<---//
+        const carrito = document.getElementById('carritoBtn');
+        const btnConfirmarCompra = document.createElement('div');
+        btnConfirmarCompra.innerHTML = `
+        <button id="btnConfirmarCompra" type="submit" class="btn m-2 btnConfirmar">Confirmar</button>
+        `
+        carrito.appendChild(btnConfirmarCompra);
+
+        //Evento para confirmar compra con get storage<---//
+        const botonConfirmar = document.getElementById("btnConfirmarCompra");
+        botonConfirmar.addEventListener("click", () => {
+            alert('Confirmar');
+        })
         carritoVacio();
     };
 });

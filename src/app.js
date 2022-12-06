@@ -268,7 +268,7 @@ const agregarEquipaje = () => {
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) :                     swal({
+                }) : swal({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -540,21 +540,6 @@ formulario.addEventListener("submit", (e) => {
 
     guardarCarrito()
 })
-
-//--->funciones de storage<---//
-const guardarCarritoStorage = (carritoDeCompras) => {
-    localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
-};
-//--->Obtener Storage<---//
-const obtenerCarritoStorage = () => {
-    const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
-    return carritoStorage;
-}
-
-//--->Funcion para limpar storage<---//
-const borrarStorage = (clave) => {
-    localStorage.removeItem(clave)
-}
 
 //--->Funcion para vaciar carrito y array si se aprieta btn VACIAR CARRITO<---//
 const carritoVacio = () => {

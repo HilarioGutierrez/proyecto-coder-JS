@@ -125,9 +125,10 @@
                     </div>
                 </li>
             </ul>
+            <div id="carritoBtn" class="d-flex flex-row flex-wrap">
             <!-- Boton para limpiar campos -->
-            <button type="reset" id="vaciarCarrito" class="btn btnGral">Vaciar carrito</button>
-            `
+            <button type="reset" id="vaciarCarrito" class="btn m-2 btnGral">Vaciar carrito</button>
+        </div>
         </div>
 
 
@@ -249,13 +250,15 @@
 
             <div class="d-flex order-last justify-content-center m-5">
                 <a href="../index.html"> <button type="button" class="btn m-2 btn-danger btnVolver">Volver</button></a>
-                <button id="btnContinuar" type="submit" class="btn m-2 btnConfirmar">Confirmar</button>
+                <button id="btnConfirmarCompra" type="submit" class="btn m-2 btnConfirmar">Confirmar</button>
+
             </div>
         </form>
 
     </section>
     <script src="../src/destinos.js"></script>
     <script src="../src/equipaje-y-mascotas.js"></script>
+    <script src="../src/storage.js"></script>
     <script src="../src/index.js"></script>
     <script src="../src/calcular-gastos.js"></script>
     <script src="../src/app.js"></script>
