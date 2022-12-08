@@ -79,15 +79,38 @@ nav {
 
 .cardDestino {
     background-color: #ceffe7;
-    height: 450px;
+    max-width: 300px;
+    height: 320px;
+    margin: 10px;
     border-radius: 50px;
+
 }
 
-.cardDestino:hover{
+.cardDestino:hover {
     background-color: #f8937e;
     transition: 1s;
+    color: #a3fed2;
+}
 
+.imagenDestino {
+    width: 300px;
+    height: 250px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
 
+.tituloTarjetasDestino {
+    font-family: 'Solway', serif;
+    text-decoration: none;
+    ;
+}
+
+.vinculo{
+    text-decoration: none;
+    color: rgb(39, 38, 38);
+}
+.vinculo:hover{
+    color:rgb(39, 38, 38);
 }
 
 .descripcionCards {
@@ -101,7 +124,7 @@ nav {
 
 }
 
-.descripcionCards:hover{
+.descripcionCards:hover {
     color: #ceffe7;
     transition: 0.4s;
 
@@ -115,67 +138,68 @@ nav {
 
 }
 
-.divPasajeros{
+.divPasajeros {
     border: solid #a3fed2;
     border-radius: 50px;
 }
 
-.colorBtnPasajeros{
+.colorBtnPasajeros {
     background-color: #f6f6f4;
 }
 
-.colorBtnPasajeros:hover{
+.colorBtnPasajeros:hover {
     background-color: #dbdbd7;
 }
 
-.equipaje{
+.equipaje {
     width: 100px;
     height: 100px;
     margin: 10px;
 }
 
-.mascota{
+.mascota {
     width: 100px;
     height: 100px;
     margin: 10px;
 }
 
-.btnGral{
+.btnGral {
     border: solid;
     border-color: #f8937e;
     border-radius: 20px;
     background-color: #f8927e86;
-    color:#c23331;
+    color: #c23331;
     font-weight: bold;
     font-size: 0.8rem;
 }
 
-.btnGral:hover{
+.btnGral:hover {
     border: solid;
     border-color: #a3fed2;
     border-radius: 20px;
     background-color: #a1d2fe;
-    color:#f8937e;
+    color: #f8937e;
     font-weight: bold;
     font-size: 0.8rem;
     box-shadow: 0px 0px 10px;
 }
 
-.pagar{
+.pagar {
     width: auto;
 }
 
-.dashSinEquipaje{
+.dashSinEquipaje {
     margin-left: 20px;
 }
-.inputEquipaje{
+
+.inputEquipaje {
     width: 60px;
     border-radius: 500px;
     text-align: center;
-    
+
 }
 
-.cardMascotas{
+.cardMascotas {
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -183,31 +207,31 @@ nav {
     align-items: center;
 }
 
-.btnConfirmar{
+.btnConfirmar {
     border: solid;
     border-color: #386641;
     border-radius: 20px;
     background-color: #a7c957;
-    color:#386641;
+    color: #386641;
     font-weight: bold;
     font-size: 0.8rem;
 }
 
-.btnConfirmar:hover{
+.btnConfirmar:hover {
     border: solid;
     border-color: #76c893;
     border-radius: 20px;
     background-color: #d9ed92;
-    color:#386641;
+    color: #386641;
     font-weight: bold;
     font-size: 0.8rem;
     box-shadow: 0px 0px 10px;
 }
 
-.btnVolver{
+.btnVolver {
     border-radius: 20px;
 }
 
-.btnBuscar{
+.btnBuscar {
     border-radius: 20px;
 }
