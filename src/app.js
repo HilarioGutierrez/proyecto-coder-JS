@@ -31,108 +31,112 @@ const carritoFechaVuelta = document.getElementById("carritoFechaVuelta");
 
 //Pintar destino en resumen de compra//
 const pintarCarrito = () => {
-    const lugar = document.getElementById("seleccionarDestino");
-    lugar.addEventListener("change", () => {
-        const carrito = document.getElementById("destinoCarrito");
-        const select = document.querySelector("#seleccionarDestino").value;
-        const destinoFinal = destinos.find(destino => destino.nombre === select)
-        carrito.innerText = `${destinoFinal.nombre}`;
-        const radioVuelta = document.getElementById("IdaYVuelta");
-        const radioIda = document.getElementById("Ida");
-        radioIda.checked = false;
-        radioVuelta.checked = false;
-        cantidadPasajeros.innerText = `0`;
-        pasajerosCarrito.innerText = `xxxxxxx`;
-        cantidad = 0;
-        carritoIva.innerText = `0`
-        carritoTaza.innerHTML = `0`;
-        pasajeCarrito.innerText = `0`;
-        subtotalCarrito.innerText = `0`;
-        totalCarrito.innerText = `0`;
-        carritoFechaIda.innerText = `xx/xx/xxxx`;
-        equipajeCarrito.innerText = `0`;
-        carritoMascota.innerText = `0`;
+    const select = document.querySelector("#seleccionarDestino").value;
+    const pedidoDatos = async () => {
+        const data = await pedidoDestinos()
+        const destinoFinal = data.find(destino => destino.nombre === select);
+        console.log(destinoFinal.nombre);
+        const lugar = document.getElementById("seleccionarDestino");
+        lugar.addEventListener("change", () => {
+            const carrito = document.getElementById("destinoCarrito");
+            carrito.innerText = `${destinoFinal.nombre}`;
+            const radioVuelta = document.getElementById("IdaYVuelta");
+            const radioIda = document.getElementById("Ida");
+            radioIda.checked = false;
+            radioVuelta.checked = false;
+            cantidadPasajeros.innerText = `0`;
+            pasajerosCarrito.innerText = `xxxxxxx`;
+            cantidad = 0;
+            carritoIva.innerText = `0`
+            carritoTaza.innerHTML = `0`;
+            pasajeCarrito.innerText = `0`;
+            subtotalCarrito.innerText = `0`;
+            totalCarrito.innerText = `0`;
+            carritoFechaIda.innerText = `xx/xx/xxxx`;
+            equipajeCarrito.innerText = `0`;
+            carritoMascota.innerText = `0`;
 
-        //--->Event para cuando solo se selecciona Viajar Ida<---//
-        const checkIda = destino => {
-            const elegirIda = document.getElementById("Ida");
-            elegirIda.addEventListener("click", () => {
-                
-                
-                
-                if (elegirIda.checked) {
-                    const carritoPasajeIda = destino.precioIda
-                    const elegirVuelta = document.getElementById("elegirVuelta");
-                    const divVueta = document.createElement("div");
-                    elegirVuelta.innerHTML = ``
-                    elegirVuelta.appendChild(divVueta);
+            //--->Event para cuando solo se selecciona Viajar Ida<---//
+            const checkIda = destino => {
+                const elegirIda = document.getElementById("Ida");
+                elegirIda.addEventListener("click", () => {
 
-                    const tazaAeroportuaria = agregarTaza(carritoPasajeIda);
 
-                    const iva = sumarIva(carritoPasajeIda)
 
-                    const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, 0, 0);
+                    if (elegirIda.checked) {
+                        const carritoPasajeIda = destino.precioIda
+                        const elegirVuelta = document.getElementById("elegirVuelta");
+                        const divVueta = document.createElement("div");
+                        elegirVuelta.innerHTML = ``
+                        elegirVuelta.appendChild(divVueta);
 
-                    carritoIva.innerText = `${iva.toFixed(2)}`
-                    carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
-                    pasajeCarrito.innerText = `${carritoPasajeIda.toFixed(2)}`;
-                    subtotalCarrito.innerText = `${carritoSubtotal.toFixed(2)}`;
+                        const tazaAeroportuaria = agregarTaza(carritoPasajeIda);
 
-                    const total = carritoSubtotal * cantidadCarrito;
-                    totalCarrito.innerText = `${total.toFixed(2)}`;
-                }
-            })
-        }
-        checkIda(destinoFinal);
+                        const iva = sumarIva(carritoPasajeIda)
 
-        //--->Funcion para crear nodo si el usuario selecciona Ida y Vuelta<---//
-        const checkIdayVuelta = destino => {
-            const elegirIdaVuelta = document.getElementById("IdaYVuelta");
-            elegirIdaVuelta.addEventListener("click", () => {
-                const pasajeCarrito = document.getElementById("pasajeCarrito");
-                if (elegirIdaVuelta.checked) {
-                    const carritoPasaje = destino.total
-                    pasajeCarrito.innerText = `$${carritoPasaje}`
+                        const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, 0, 0);
 
-                    const elegirVuelta = document.getElementById("elegirVuelta");
-                    const divVueta = document.createElement("div");
-                    divVueta.classList.add("fechaVolver")
-                    elegirVuelta.innerHTML = `
+                        carritoIva.innerText = `${iva.toFixed(2)}`
+                        carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
+                        pasajeCarrito.innerText = `${carritoPasajeIda.toFixed(2)}`;
+                        subtotalCarrito.innerText = `${carritoSubtotal.toFixed(2)}`;
+
+                        const total = carritoSubtotal * cantidadCarrito;
+                        totalCarrito.innerText = `${total.toFixed(2)}`;
+                    }
+                })
+            }
+            checkIda(destinoFinal);
+
+            //--->Funcion para crear nodo si el usuario selecciona Ida y Vuelta<---//
+            const checkIdayVuelta = destino => {
+                const elegirIdaVuelta = document.getElementById("IdaYVuelta");
+                elegirIdaVuelta.addEventListener("click", () => {
+                    const pasajeCarrito = document.getElementById("pasajeCarrito");
+                    if (elegirIdaVuelta.checked) {
+                        const carritoPasaje = destino.total
+                        pasajeCarrito.innerText = `$${carritoPasaje}`
+
+                        const elegirVuelta = document.getElementById("elegirVuelta");
+                        const divVueta = document.createElement("div");
+                        divVueta.classList.add("fechaVolver")
+                        elegirVuelta.innerHTML = `
                 <label for="fechaVuelta">Elija la fecha de vuelta</label>
                     <input type="date" id="fechaVuelta" min="2022-11-28" max="2023-02-28" class="fechaVuelta rounded-2 m-1">
                 `
-                    elegirVuelta.appendChild(divVueta);
+                        elegirVuelta.appendChild(divVueta);
 
-                    //funcion para pintar la fecha de vuelta<---//
-                    const fechaVuelta = document.getElementById("fechaVuelta");
-                    fechaVuelta.addEventListener("change", () => {
-                        carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
+                        //funcion para pintar la fecha de vuelta<---//
+                        const fechaVuelta = document.getElementById("fechaVuelta");
+                        fechaVuelta.addEventListener("change", () => {
+                            carritoFechaVuelta.innerText = `- ${fechaVuelta.value}`;
 
-                    })
+                        })
 
-                    const tazaAeroportuaria = agregarTaza(carritoPasaje);
+                        const tazaAeroportuaria = agregarTaza(carritoPasaje);
 
-                    const iva = sumarIva(carritoPasaje)
+                        const iva = sumarIva(carritoPasaje)
 
-                    let carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasaje, 0, 0)
+                        let carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasaje, 0, 0)
 
-                    carritoIva.innerText = `${iva.toFixed(2)}`
-                    carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
-                    pasajeCarrito.innerText = `${carritoPasaje.toFixed(2)}`;
-                    subtotalCarrito.innerText = `${carritoSubtotal.toFixed(2)}`;
+                        carritoIva.innerText = `${iva.toFixed(2)}`
+                        carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
+                        pasajeCarrito.innerText = `${carritoPasaje.toFixed(2)}`;
+                        subtotalCarrito.innerText = `${carritoSubtotal.toFixed(2)}`;
 
-                    const totalCarrito = document.getElementById("totalCarrito");
+                        const totalCarrito = document.getElementById("totalCarrito");
 
-                    const total = carritoSubtotal * cantidadCarrito;
-                    totalCarrito.innerText = `${total.toFixed(2)}`;
-                }
-            })
-        }
-        checkIdayVuelta(destinoFinal);
-        carritoVacio();
+                        const total = carritoSubtotal * cantidadCarrito;
+                        totalCarrito.innerText = `${total.toFixed(2)}`;
+                    }
+                })
+            }
+            checkIdayVuelta(destinoFinal);
+            carritoVacio();
 
-    })
-
+        })
+    }
+    pedidoDatos();
     //--->Funcion para pintar en carrito fecha de ida<---//
     const pintarFechaIda = () => {
         const fechaIda = document.getElementById("fechaIda");
@@ -143,7 +147,7 @@ const pintarCarrito = () => {
         })
     }
     pintarFechaIda();
-    
+
 }
 pintarCarrito();
 
@@ -262,8 +266,8 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje23.addEventListener("click", () => {
                 precioEquipaje23 = busquedaEquipaje.precio * cantidadEquipaje23;
-                
-                cantidadEquipaje23 > cantidadCarrito? swal({
+
+                cantidadEquipaje23 > cantidadCarrito ? swal({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
@@ -297,12 +301,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje12.addEventListener("click", () => {
                 precioEquipaje12 = busquedaEquipaje.precio * cantidadEquipaje12;
-                cantidadEquipaje23 > cantidadCarrito? swal({
+                cantidadEquipaje23 > cantidadCarrito ? swal({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) :                     swal({
+                }) : swal({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -332,12 +336,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje10.addEventListener("click", () => {
                 precioEquipaje10 = busquedaEquipaje.precio * cantidadEquipaje10;
-                cantidadEquipaje23 > cantidadCarrito? swal({
+                cantidadEquipaje23 > cantidadCarrito ? swal({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) :                     swal({
+                }) : swal({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -367,12 +371,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje0.addEventListener("click", () => {
                 precioEquipaje0 = busquedaEquipaje.precio * cantidadEquipaje0;
-                cantidadEquipaje23 > cantidadCarrito? swal({
+                cantidadEquipaje23 > cantidadCarrito ? swal({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) :                     swal({
+                }) : swal({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -513,10 +517,10 @@ formulario.addEventListener("submit", (e) => {
 
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
-                swal({
-                    icon: "success",
-                    subtitle: "Ha confirmado su viaje",
-                    text: `Resumen de viaje:\n
+            swal({
+                icon: "success",
+                subtitle: "Ha confirmado su viaje",
+                text: `Resumen de viaje:\n
             Destino: ${destinoNuevo}
             Pasajeros: ${cantidad}
             Fecha Ida: ${idaFecha.value}
@@ -528,10 +532,10 @@ formulario.addEventListener("submit", (e) => {
             Iva: $${Number(ivaObjeto.textContent)}
             Subtotal: $${Number(subtotalObjeto.textContent)}
             Total: $${Number(totalObjeto.textContent)}`
-                })
-                console.log(carritoCompra),
+            })
+            console.log(carritoCompra),
                 guardarCarritoStorage(carritoCompra);
-            
+
         }
         btnConfirmarCompra()
         carritoVacio();

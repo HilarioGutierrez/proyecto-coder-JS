@@ -1,19 +1,5 @@
 const sectionCards = document.getElementById("sectionCards");
 
-//--->funcion para obtener x fetch los destinos en formato JSON<---//
-const pedidoDestinos = async () => {
-   //--->Try/Catch para validar por si llega haber un error en la carga de la api/json<---//
-    try {
-        const resp = await fetch("../src/destinos.json");
-        const data = resp.json();
-        console.log(data);
-
-        return data
-    } catch (err) {
-        alert("surgui el siguiente error: " + err);
-    }
-};
-
 //--->Funcion para pintar los datos obtenidos en JSON<---//
 const pintarPedidoDestinos = async () => {
     const data = await pedidoDestinos();
