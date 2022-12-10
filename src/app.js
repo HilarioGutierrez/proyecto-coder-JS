@@ -35,9 +35,11 @@ const pintarCarrito = () => {
     const pedidoDatos = async () => {
         const data = await pedidoDestinos()
         const destinoFinal = data.find(destino => destino.nombre === select);
-        console.log(destinoFinal.nombre);
         const lugar = document.getElementById("seleccionarDestino");
-        lugar.addEventListener("change", () => {
+        lugar.addEventListener("change", async () => {
+            const select = document.querySelector("#seleccionarDestino").value;
+            const data = await pedidoDestinos()
+            const destinoFinal = data.find(destino => destino.nombre === select);
             const carrito = document.getElementById("destinoCarrito");
             carrito.innerText = `${destinoFinal.nombre}`;
             const radioVuelta = document.getElementById("IdaYVuelta");
@@ -531,8 +533,23 @@ formulario.addEventListener("submit", (e) => {
             TazaAeropuerto: $${Number(taza.textContent)}
             Iva: $${Number(ivaObjeto.textContent)}
             Subtotal: $${Number(subtotalObjeto.textContent)}
-            Total: $${Number(totalObjeto.textContent)}`
-            })
+            Total: $${Number(totalObjeto.textContent)}`,
+                buttons: true,
+            }).then((comprar) => {
+                if (comprar) {
+                    swal({
+                        title: "Compra realizada con exito",
+                        text: "Que tenga un buen viaje!",
+                        icon: "../assets/avionpng.png",
+                    });
+                } else {
+                    swal("Ha cancelado la compra. Vuelta a intentarlo ", {
+                        icon: "error",
+                    })
+                    VaciarCarrito();
+                }
+            });
+
             console.log(carritoCompra),
                 guardarCarritoStorage(carritoCompra);
 
