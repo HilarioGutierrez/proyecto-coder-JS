@@ -149,7 +149,7 @@ const pintarCarrito = () => {
         })
     }
     pintarFechaIda();
-
+    pedidoDatos();
 }
 pintarCarrito();
 
@@ -269,12 +269,12 @@ const agregarEquipaje = () => {
             btnConfirmEquipaje23.addEventListener("click", () => {
                 precioEquipaje23 = busquedaEquipaje.precio * cantidadEquipaje23;
 
-                cantidadEquipaje23 > cantidadCarrito ? swal({
+                cantidadEquipaje23 > cantidadCarrito ? SwalFire({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) : swal({
+                }) : Swal.fire({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -303,12 +303,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje12.addEventListener("click", () => {
                 precioEquipaje12 = busquedaEquipaje.precio * cantidadEquipaje12;
-                cantidadEquipaje23 > cantidadCarrito ? swal({
+                cantidadEquipaje23 > cantidadCarrito ? Swal.fire({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) : swal({
+                }) : Swal.fire({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -338,12 +338,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje10.addEventListener("click", () => {
                 precioEquipaje10 = busquedaEquipaje.precio * cantidadEquipaje10;
-                cantidadEquipaje23 > cantidadCarrito ? swal({
+                cantidadEquipaje23 > cantidadCarrito ? Swal.fire({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) : swal({
+                }) : Swal.fire({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -373,12 +373,12 @@ const agregarEquipaje = () => {
             ;
             btnConfirmEquipaje0.addEventListener("click", () => {
                 precioEquipaje0 = busquedaEquipaje.precio * cantidadEquipaje0;
-                cantidadEquipaje23 > cantidadCarrito ? swal({
+                cantidadEquipaje23 > cantidadCarrito ? Swal.fire({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
                     duration: 3000,
-                }) : swal({
+                }) : Swal.fire({
                     icon: "success",
                     title: "Agrando su equipaje!!",
                     text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
@@ -519,33 +519,39 @@ formulario.addEventListener("submit", (e) => {
 
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
-            swal({
+            Swal.fire({
+                loaderHtml:"Hila",
                 icon: "success",
-                subtitle: "Ha confirmado su viaje",
-                text: `Resumen de viaje:\n
-            Destino: ${destinoNuevo}
-            Pasajeros: ${cantidad}
-            Fecha Ida: ${idaFecha.value}
-            Fecha Vuelta: ${vueltaFecha.textContent}
-            Precio por persona: $${Number(precio.textContent)}
-            Equipaje total: $${Number(equipaje.textContent)}
-            Mascota: $${Number(carritoMascota.textContent)}
-            TazaAeropuerto: $${Number(taza.textContent)}
-            Iva: $${Number(ivaObjeto.textContent)}
-            Subtotal: $${Number(subtotalObjeto.textContent)}
-            Total: $${Number(totalObjeto.textContent)}`,
+                title: "Ha realizado su reserva",
+                color: "#f8937e",
+                showCancelButton: true,
+                showConfirmButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor:"green",
+                html: `<div>
+                <ul class="d-flex flex-column justify-content-center">
+                    <li><strong>Destino</strong>: ${destinoNuevo}\</li>
+                    <li><strong> Pasajeros</strong>: ${cantidad}</li>
+                    <li><strong>Fecha Ida</strong>: ${idaFecha.value}</li>
+                    <li><strong>Fecha Vuelta</strong>: ${vueltaFecha.textContent}</li>
+                    <li><strong>Precio por persona</strong>: $${Number(precio.textContent)}</li>
+                    <li><strong>Equipaje total</strong>: $${Number(equipaje.textContent)}</li>
+                    <li><strong>Mascota</strong>: $${Number(carritoMascota.textContent)}</li>
+                    <li><strong>TazaAeropuerto</strong>: $${Number(taza.textContent)}</li>
+                    <li><strong>Iva</strong>: $${Number(ivaObjeto.textContent)}</li>
+                    <li><strong>Subtotal</strong>: $${Number(subtotalObjeto.textContent)}</li>
+                    <li><strong>Total</strong>: $${Number(totalObjeto.textContent)}</li>
+                </ul>
+            </div>`,
                 buttons: true,
-            }).then((comprar) => {
-                if (comprar) {
-                    swal({
-                        title: "Compra realizada con exito",
-                        text: "Que tenga un buen viaje!",
-                        icon: "../assets/avionpng.png",
-                    });
-                } else {
-                    swal("Ha cancelado la compra. Vuelta a intentarlo ", {
-                        icon: "error",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title:"Reserva Confirmada",
                     })
+                } else if (result.isDenied) {
+                    Swal.fire('Ha cancelado la reserva', '', 'info')
                     VaciarCarrito();
                 }
             });
@@ -583,7 +589,7 @@ const carritoVacio = () => {
         carritoFechaIda.innerText = `xx/xx/xxxx`;
         carritoFechaVuelta.innerText = `xx/xx/xxxx`;
         equipajeCarrito.innerText = `0`;
-        swal({
+        Swal.fire({
             icon: "success",
             title: "Carrito vacio correctamente!",
             text: "Su carrito se encuentra sin productos",
@@ -597,4 +603,6 @@ const carritoVacio = () => {
 
     });
 }
+
+
 

@@ -3,10 +3,10 @@
 setTimeout(() => {
     Swal.fire({
         background: " url(/assets/navidad3.jpg)",
-        title: "Aprovecha nuestras ofertas de navidad",
+        title: "Te deseamos Felices Fiestas",
         color: "#ffffff",
-        text: "Podes viajar a cualquiera de nuestros destinos con un 20% OFF usando el codigo NAVIDADKAN",
-        confirmButtonText: 'Continuar',
+        text: "Gracias por elegirnos a lo largo del año para comprar tus pasajes. Desde Turismo Kan te deseamos felices fiestas!",
+        confirmButtonText: 'cerrar',
         confirmButtonColor: "#c23331",
         backdrop: `
         rgba(0,0,123,0.4)
@@ -15,4 +15,4 @@ setTimeout(() => {
         no-repeat`
     })
 
-}, 1500)
+}, 1000)

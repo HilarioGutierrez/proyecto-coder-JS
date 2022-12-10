@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("carrito")) {
         const getStorage = obtenerCarritoStorage();
 
-        swal({
+        Swal.fire({
             icon: "warning",
             title: "Tiene elementos en el carrito",
             text: " Finalice su comprar"
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Evento para confirmar compra con get storage<---//
         const botonConfirmar = document.getElementById("btnConfirmarCompra");
         botonConfirmar.addEventListener("click", () => {
-            swal({
+            Swal.fire({
                 icon: "success",
                 title: "Ha realizado la compra con exito"
             })
