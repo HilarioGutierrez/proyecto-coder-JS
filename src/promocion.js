@@ -2,7 +2,7 @@
 
 setTimeout(() => {
     Swal.fire({
-        background: " url(./navidad3.jpg)",
+        background: " url(./assets/navidad3.jpg)",
         title: "Te deseamos Felices Fiestas",
         color: "#ffffff",
         text: "Gracias por elegirnos a lo largo del año para comprar tus pasajes. Desde Turismo Kan te deseamos felices fiestas!",
