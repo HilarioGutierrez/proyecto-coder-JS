@@ -4,7 +4,7 @@
 const pedidoDestinos = async () => {
     //--->Try/Catch para validar por si llega haber un error en la carga de la api/json<---//
     try {
-        const resp = await fetch("./destinos.json");
+        const resp = await fetch("../destinos.json");
         const data = resp.json();
         return data
     } catch (err) {
