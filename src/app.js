@@ -520,8 +520,8 @@ formulario.addEventListener("submit", (e) => {
         const btnConfirmarCompra = () => {
 
             Swal.fire({
-                icon: "success",
-                title: "Ha realizado su reserva",
+                icon: "info",
+                title: "Confirme su reserva",
                 color: "#f8937e",
                 showCancelButton: true,
                 showConfirmButton: true,
