@@ -518,8 +518,8 @@ formulario.addEventListener("submit", (e) => {
 
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
-            Swal.fire({
 
+            Swal.fire({
                 icon: "success",
                 title: "Ha realizado su reserva",
                 color: "#f8937e",
@@ -529,7 +529,7 @@ formulario.addEventListener("submit", (e) => {
                 confirmButtonColor: "green",
                 html: `<div>
                 <ul class="d-flex flex-column justify-content-center">
-                    <li><strong>Destino</strong>: ${destinoNuevo}\</li>
+                    <li><strong>Destino</strong>: ${destinoNuevo}</li>
                     <li><strong> Pasajeros</strong>: ${cantidad}</li>
                     <li><strong>Fecha Ida</strong>: ${idaFecha.value}</li>
                     <li><strong>Fecha Vuelta</strong>: ${vueltaFecha.textContent}</li>
@@ -549,14 +549,28 @@ formulario.addEventListener("submit", (e) => {
                         icon: 'success',
                         title: "Reserva Confirmada",
                     })
-                    carritoVacio();
                     formulario.reset();
+                    getStorageDestino.innerText = `xxxxxx`;
+                    getStoragePasajero.innerText = `0`;
+                    getStorageFechaIda.innerText = `xx/xx/xxxx`;
+                    getStorageFechaVuelta.innerText = `xx/xx/xxxx`;
+                    getStoragePrecioPasaje.innerText = `0`;
+                    getStorageEquipaje.innerText = `0`;
+                    getStorageMascota.innerText = `0`;
+                    getStorageTaza.innerText = `0`
+                    getStorageIva.innerText = `0`
+                    getStorageSubtotal.innerText = `0`
+                    getStorageTotal.innerText = `0`
+                    carritoCompra.splice(0, 10);
+                    //--->Borra local storage<---//
+                    localStorage.removeItem("carrito");
                 } else if (result.isDenied) {
                     Swal.fire('Ha cancelado la reserva', '', 'info')
-
                 }
+                carritoVacio();
             });
             guardarCarritoStorage(carritoCompra);
+            console.log(carritoCompra);
 
         }
         btnConfirmarCompra()
@@ -598,8 +612,6 @@ const carritoVacio = () => {
         cantidadPasajeros.innerText = 0;
         cardsMascotas.innerHTML = ``
         carritoMascota.innerText = `0`
-        formulario.appendChild(cardsMascotas)
-
     });
 }
 
