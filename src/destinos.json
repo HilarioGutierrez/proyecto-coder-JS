@@ -1,7 +1,7 @@
 [
     {
         "nombre": "Mendoza",
-        "imagen": "./assets/mendoza-portada.jpg",
+        "imagen": "../assets/mendoza-portada.jpg",
         "precioIda": 6999,
         "precioVuelta": 5649,
         "total": 12648
@@ -9,7 +9,7 @@
 
     {
         "nombre": "Puerto Iguazú",
-        "imagen": "./assets/iguazu-portada.jpg",
+        "imagen": "../assets/iguazu-portada.jpg",
         "precioIda": 6455,
         "precioVuelta": 5000,
         "total": 11455
@@ -17,7 +17,7 @@
 
     {
         "nombre": "Córdoba",
-        "imagen": "./assets/cordoba-portada.jpg",
+        "imagen": "../assets/cordoba-portada.jpg",
         "precioIda": 13187,
         "precioVuelta": 24861,
         "total": 38048
@@ -25,7 +25,7 @@
 
     {
         "nombre": "Bariloche",
-        "imagen": "./assets/bariloche-portada.jpg",
+        "imagen": "../assets/bariloche-portada.jpg",
         "precioIda": 12300,
         "precioVuelta": 10500,
         "total":22800
@@ -34,7 +34,7 @@
 
     {
         "nombre": "Puerto Madryn",
-        "imagen": "./assets/madryn-portada.jpg",
+        "imagen": "../assets/madryn-portada.jpg",
         "precioIda": 15675,
         "precioVuelta": 9942,
         "total": 25617
@@ -42,7 +42,7 @@
 
     {
         "nombre": "Jujuy",
-        "imagen": "./assets/jujuy-portada.jpg",
+        "imagen": "../assets/jujuy-portada.jpg",
         "precioIda": 9931,
         "precioVuelta": 11478,
         "total": 21409
@@ -50,7 +50,7 @@
 
     {
         "nombre": "Salta",
-        "imagen": "./assets/salta-portada.jpg",
+        "imagen": "../assets/salta-portada.jpg",
         "precioIda": 16448,
         "precioVuelta": 7309,
         "total": 23757
@@ -58,7 +58,7 @@
 
     {
         "nombre": "Ushuaia",
-        "imagen": "./assets/ushuaia-portada.jpg",
+        "imagen": "../assets/ushuaia-portada.jpg",
         "precioIda": 13699,
         "precioVuelta": 10930,
         "total": 24629
