@@ -269,15 +269,14 @@ const agregarEquipaje = () => {
             btnConfirmEquipaje23.addEventListener("click", () => {
                 precioEquipaje23 = busquedaEquipaje.precio * cantidadEquipaje23;
 
-                cantidadEquipaje23 > cantidadCarrito ? SwalFire({
+                cantidadEquipaje23 > cantidadCarrito ? Swal.fire({
                     icon: "warning",
                     title: "LLeva mucho equipaje :(",
                     text: "Solo esta permitido 1 equipaje de 23kg por pasajero",
-                    duration: 3000,
                 }) : Swal.fire({
                     icon: "success",
                     title: "Agrando su equipaje!!",
-                    text: `Agrego con exito su equipaje de 12kg\n cantidad agregada: ${cantidadEquipaje23}`,
+                    text: `Agrego con exito su equipaje de 12kg. Cantidad agregada: ${cantidadEquipaje23}`,
                 })
                 equipajeCarrito.innerText = `${precioEquipaje23 + precioEquipaje12 + precioEquipaje10 + precioEquipaje0}`
             })
@@ -520,14 +519,14 @@ formulario.addEventListener("submit", (e) => {
         //--->btn confirmar formulario<---//
         const btnConfirmarCompra = () => {
             Swal.fire({
-                loaderHtml:"Hila",
+
                 icon: "success",
                 title: "Ha realizado su reserva",
                 color: "#f8937e",
                 showCancelButton: true,
                 showConfirmButton: true,
                 cancelButtonColor: '#d33',
-                confirmButtonColor:"green",
+                confirmButtonColor: "green",
                 html: `<div>
                 <ul class="d-flex flex-column justify-content-center">
                     <li><strong>Destino</strong>: ${destinoNuevo}\</li>
@@ -548,16 +547,16 @@ formulario.addEventListener("submit", (e) => {
                 if (result.isConfirmed) {
                     Swal.fire({
                         icon: 'success',
-                        title:"Reserva Confirmada",
+                        title: "Reserva Confirmada",
                     })
+                    carritoVacio();
+                    formulario.reset();
                 } else if (result.isDenied) {
                     Swal.fire('Ha cancelado la reserva', '', 'info')
-                    VaciarCarrito();
+
                 }
             });
-
-            console.log(carritoCompra),
-                guardarCarritoStorage(carritoCompra);
+            guardarCarritoStorage(carritoCompra);
 
         }
         btnConfirmarCompra()
