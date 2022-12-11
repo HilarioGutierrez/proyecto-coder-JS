@@ -62,9 +62,6 @@ const pintarCarrito = () => {
             const checkIda = destino => {
                 const elegirIda = document.getElementById("Ida");
                 elegirIda.addEventListener("click", () => {
-
-
-
                     if (elegirIda.checked) {
                         const carritoPasajeIda = destino.precioIda
                         const elegirVuelta = document.getElementById("elegirVuelta");
