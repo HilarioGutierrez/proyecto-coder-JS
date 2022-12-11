@@ -75,49 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // //--->Agrega btn confirmar cuando se recupera storage<---//
-        // const carrito = document.getElementById('carritoBtn');
-        // const btnConfirmarCompra = document.createElement('div');
-        // btnConfirmarCompra.innerHTML = `
-        // <button id="btnCompra" type="submit" class="btn m-2 btnConfirmar">Comprar</button>
-        // `
-        // carrito.appendChild(btnConfirmarCompra);
-
-        // //Evento para confirmar compra con get storage<---//
-        // const botonConfirmar = document.getElementById("btnCompra");
-        // botonConfirmar.addEventListener("click", () => {
-        //     const getStorage = obtenerCarritoStorage();
-        //     //if (getStorage.length === 1) {
-        //     //--->Si el carrito esta vacio no puede comprar<---//
-        //     Swal.fire({
-        //         icon: "warning",
-        //         title: "El carrito se encuentra vacio",
-        //         text: "Para realizar una compra debe tener elementos en el carrito",
-        //     })
-
-        //     // } else if(getStorage.length === typeof null) {
-        //     Swal.fire({
-        //         icon: "success",
-        //         title: "Ha realizado la compra con exito"
-        //     })
-        //     formulario.reset();
-        //     getStorageDestino.innerText = `xxxxxx`;
-        //     getStoragePasajero.innerText = `0`;
-        //     getStorageFechaIda.innerText = `xx/xx/xxxx`;
-        //     getStorageFechaVuelta.innerText = `xx/xx/xxxx`;
-        //     getStoragePrecioPasaje.innerText = `0`;
-        //     getStorageEquipaje.innerText = `0`;
-        //     getStorageMascota.innerText = `0`;
-        //     getStorageTaza.innerText = `0`
-        //     getStorageIva.innerText = `0`
-        //     getStorageSubtotal.innerText = `0`
-        //     getStorageTotal.innerText = `0`
-        //     carritoCompra.splice(0, 10);
-        //     //--->Borra local storage<---//
-        //     localStorage.removeItem("carrito");
-        //     //  }
-        //     console.log(obtenerCarritoStorage())
-        // })
         carritoVacio();
     };
 });
