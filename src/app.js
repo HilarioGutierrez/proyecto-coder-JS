@@ -73,7 +73,7 @@ const pintarCarrito = () => {
 
                         const iva = sumarIva(carritoPasajeIda)
 
-                        const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, 0, 0);
+                        const carritoSubtotal = valorSubtotal(iva, tazaAeroportuaria, carritoPasajeIda, Number(equipajeCarrito),Number(carritoMascota));
 
                         carritoIva.innerText = `${iva.toFixed(2)}`
                         carritoTaza.innerHTML = `${tazaAeroportuaria.toFixed(2)}`;
