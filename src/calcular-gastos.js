@@ -18,16 +18,3 @@ function valorSubtotal(pasajes, equipaje, mascota, taza, iva) {
     subtotal = Number(pasajes + equipaje + mascota + taza + iva)
     return subtotal
 }
-
-//--->Funcion para calcular equipaje<---//
-function equipaje(equipaje) {
-
-    let equipajeTotal = equipaje
-    return equipajeTotal
-}
-//--->Funcion para calcular mascotas<---//
-function mascotas(mascotas) {
-
-    let mascotaTotal = mascotas
-    return mascotaTotal
-}
