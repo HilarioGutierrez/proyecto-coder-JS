@@ -34,7 +34,7 @@ const pintarCarrito = () => {
     const select = document.querySelector("#seleccionarDestino").value;
     const pedidoDatos = async () => {
         const data = await pedidoDestinos()
-        const destinoFinal = data.find(destino => destino.nombre === select);
+        // const destinoFinal = data.find(destino => destino.nombre === select);
         const lugar = document.getElementById("seleccionarDestino");
         lugar.addEventListener("change", async () => {
             const select = document.querySelector("#seleccionarDestino").value;
